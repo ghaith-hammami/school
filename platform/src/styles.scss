@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+*{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'roboto' ,sans-serif;
+}
+html{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.padding_page{
+  padding: 0 10vw;
+    padding-top: 10vh;
+}
+::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-button{display:none;}
+    ::-webkit-scrollbar-thumb {
+      background: #F8B200; 
+      border-radius: 30px;
+      height: .2rem;
+    }
+    ::-webkit-scrollbar-track {
+      border-radius: 30px;
+    }
+
+
+    /*btn animation*/
+    @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+
+/* 
+========================
+      BUTTON ONE
+========================
+*/
+.btn-one {
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+}
+.btn-one span {
+  transition: all 0.3s;
+}
+.btn-one::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: #F8B200;
+  border-bottom-color: #F8B200;
+  transform: scale(0.1, 1);
+}
+.btn-one:hover {
+  letter-spacing: 2px;
+}
+.btn-one:hover::before {
+  opacity: 1; 
+  transform: scale(1, 1); 
+}
+.btn-one::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255,255,255,0.1);
+}
+.btn-one:hover::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+//filter_btn
+.btn-three {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative;
+  margin-right: 0.2rem;
+}
+.btn-three::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+.btn-three:hover::before {
+  opacity: 0 ;
+  transform: scale(0.5,0.5);
+}
+.btn-three::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,255,255,0.5);
+  transform: scale(1.2,1.2);
+}
+.btn-three:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
+//avatar
+.avatar{
+  position: absolute;
+  bottom: 0;
+  left: -30vw;
+  height: 100%;
+}
+

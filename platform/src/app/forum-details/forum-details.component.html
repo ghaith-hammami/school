@@ -1,0 +1,42 @@
+<div class="back">
+    <div class="Titel">
+      <div class="container">
+        <h1 class="question"> why 1+1=2?</h1>
+      <h2 class="titel1">name </h2>
+    </div>
+      </div>
+      
+    <div class="part2">
+      <div class="container">
+        <h2 class="titel1">name </h2>
+     <h1 class="question"> why 1+1=2?</h1>
+    </div>
+<div class="content">
+  <p class="paragraphe">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Faucibus porta praesent sapien augue nulla nisi, eu porttitor. Vitae nunc egestas pellentesque sed sagittis
+        velit gravida non. Feugiat maurisimperdiet volutpat magna et tristique dictum tellus elit. 
+        Augue a turpis ipsum euismod. Etiam varius tempor arcu elit varius id pellentesque lorem.
+        Egestas urna scelerisque lectus laoreet maecenas id velit, erat.Facilisi vitae sit ornare et tortor 
+        massa sit. Odio dignissim porttitor sodales tortor cursus. Viverra pulvinar ipsum adipiscing purus molestie
+        nulla consectetur felis. Duis aliquam a consequat at euismod risuspotenti magna tincidunt. 
+        Sapien ornare accumsan aliquam aliquam iaculis. Leo cursus erat a, volutpat egestas suspendisse. 
+        Suscipit elit risus, elit enim. Vel leo phasellus turpis interdum. Pretium ut in consectetur 
+        posuere elit adipiscing platea sed massa. Velit consequat turpis viverra risus in ornare pretium in. 
+        Gravida molestie nunc, euismod at tortor. Semper morbi integer nunc amet, tempor sit in purus. 
+        Neque, ac purus turpis pharetra sagittis id. </p>
+      </div>
+    </div>
+    <button (click)="toogleTag()" (click)="sethide($event.target, 'hide')" class="Btn" >answer</button>
+    <div class="part3" *ngIf=showMe>
+      <form action="#" class="from-wrap" method="POST">
+        <h2 class="titel1">name </h2>
+        <div class="form-box">
+          <textarea rows="25" cols="16" placeholder="answer here..." class="box" ></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="submit">create post</button>
+        </div>
+      </form>
+    </div> 
+ </div>

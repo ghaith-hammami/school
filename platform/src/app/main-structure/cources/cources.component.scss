@@ -1,0 +1,193 @@
+.courses_page{
+    color: white;
+      font-family: 'roboto';
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1{
+          font-size: 4rem;
+          font-weight: bold;
+          margin-bottom: 1.5rem;
+          font-family: 'El Messiri', sans-serif;
+          position: relative;
+      }
+      
+      background: linear-gradient(#151c26,#000);
+  }
+  .page_head{
+      height: 60vh;
+      width: 100%;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      align-items: center;
+
+  }
+  .header_avatar{
+      position: absolute;
+      bottom: 2.4rem;
+      left: 42%;
+      width: 10rem;
+  }
+  .btn-one{
+      color: #F8B200;
+  }
+  .modal-header{
+    background-color: #ffb700  ;
+  }
+  .buttons{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+  }
+  .button_box{
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+  }
+  .filter_btn .active{
+      background-color: #05FF00;
+  }
+  .btn_height{
+      height: 2.5rem;
+      align-self: flex-end;
+  }
+  .add_course{
+    padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 10.6rem;
+      h3{
+          font-size: 1.15rem;
+      }
+  }
+  
+  .form{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .input_box{
+          width: 100%;
+          span{
+              position: absolute;
+              bottom: 0;
+              left: 0.3rem ;
+              color:#F8B200 ;
+              padding: 1rem 0;
+              transition: 0.3s;
+              font-weight: bold;
+          }
+          position: relative;
+          input{
+              padding: 0 .3rem;
+              font-weight: bold;
+              border: none;
+              background-color:rgba(196, 196, 196, 0.1); ;
+              border-radius: 5px;
+              width:100%;
+              height: 3.1rem;
+              &:focus{
+                  outline: none;
+                  border: 1px solid black ;
+              }
+              &:focus ~ span{
+                 bottom: 20%;
+              }
+              &:valid ~ span{
+                bottom: 20%;
+             }
+          }
+      }
+  }
+  
+  .btn-primary{
+    background-color:#F8B200 ;
+    border: none;
+  }
+  .modal-title{
+      font-weight: bold;
+      color: white;
+  }
+  .details{
+      width:80%; 
+      display: flex;
+      justify-content: space-between;
+      
+      select,a{
+          background:none;
+          border: none;
+          font-size:1rem ;
+          font-weight: bold;
+      }
+      a{
+          color: #4FA4B4;
+      }
+  }
+  .course_cont{
+      width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+      }
+      
+      
+    
+
+      
+      
+  .course_div{
+      h3{
+          color: #F8B200;
+      }
+      margin-bottom: 1rem;   
+    width: 100%;
+        padding: 0.8rem 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .course_title{
+          font-size: 1rem;
+          font-weight: bold;
+      }
+      h6{
+          font-size: 0.8rem;
+          font-weight: 400;
+      }
+      a{
+          color: #4F00F8;
+          margin-right: 0.3rem;
+          text-decoration: none;
+      }
+  }
+
+
+  .my-pagination::ng-deep{
+    margin-top: 1rem;
+    .current{
+      background-color: #F8B200;
+    }
+  }
+  footer{
+      position: relative;
+      width: 100vw;
+      .avatar{
+          right: 0;
+          left: auto;
+      }
+      .background{
+          width: 100vw;
+      }
+  }
+  

@@ -1,0 +1,61 @@
+.form{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .input_box{
+            margin-bottom: 1.5rem;
+          span{
+              position: absolute;
+              bottom: 0;
+              left: 0.3rem ;
+              color:#757575 ;
+              padding: 1.3rem 0;
+              transition: 0.3s;
+              font-weight: bold;
+          }
+          position: relative;
+          input{
+              padding: 0 .3rem;
+              font-weight: bold;
+              border: none;
+              background-color:rgba(196, 196, 196, 0.1); ;
+              border-radius: 5px;
+              width:20.69rem;
+              height: 3.9rem;
+              &:focus{
+                  outline: none;
+                  border: 2px solid black ;
+              }
+              &:focus ~ span{
+                 bottom: 30%;
+              }
+              &:valid ~ span{
+                 bottom: 30%;
+              }
+              
+          }
+
+      }
+      button{
+            margin-top: 2rem;
+            border: none;
+             width:8.3rem ;
+             height:3.25rem;
+             font-size: 1.2rem;
+             font-weight: bold;
+             background-color:#F8B200 ;
+            align-self: flex-end;
+        }
+}
+
+
+@media only screen  and (max-width :450px) {
+    input{
+        width:17rem !important;
+    }
+    button{
+        width: 6rem !important;
+        height: 2.7rem !important;
+        font-size: 1.2rem !important;
+    }
+}

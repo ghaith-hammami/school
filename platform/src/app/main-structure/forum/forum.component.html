@@ -1,0 +1,88 @@
+<div class="all_page">
+  <div class="bundle">
+    <!-- <div class="quote index">
+      <img src="../../../assets/icons/quote.svg" alt="">
+      <h1>lorem ipsum dolor dolor dolores bellisima collateral </h1>
+      <img src="../../../assets/icons/quote.svg" alt="">
+    </div> -->
+    <img class="bundle_img" src="../../../assets/images/forum_bg.png" alt="">
+    <h1 class="index">Welcome to the Forum</h1>
+    <h5 class="index">a place where everyone contrebute to acheive <span>SUCCESS</span></h5>
+    <img class="index swipe_img" src="../../../assets/images/swipe down.svg" alt="">
+  </div>
+  <div class="posts_page padding_page index">
+    <div class="page_head">
+      <div class="title_filter">
+        <h1>Ask, Question & Discuss.</h1>
+        <div class="button_box">
+          <div class="btn btn-three">
+            <span>NEW</span>
+          </div>
+          <div class="btn btn-three">
+            <span>MATH</span>
+          </div>
+          <div class="btn btn-three">
+            <span>SVT</span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        New post
+      </button> 
+
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form">
+              <label for="title">post title</label>
+          <input name="title" type="text" placeholder="title...">
+          <label for="post_text">post body</label>
+          <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
+        </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Create post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    
+    
+    </div>
+
+      
+        <div class="post_div " *ngFor="let item of postlist| paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
+          <div class="info">    
+            <h1 class="blog_title">Why 1+1=2</h1>
+            <div class="date">
+              22 may
+            </div>
+          </div>
+          <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Faucibus porta praesent sapien augue nulla nisi, eu porttitor.
+            Vitae nunc egestas pellentesque sed sagittis velit gravida non. 
+            Feugiat mauris imperdiet volutpat magna et tristique dictum tellus elit.
+              Augue a turpis ipsum euismod...  </p>
+          <a href="#" class="RM">Read More</a> 
+      </div>
+      <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+      <div class="footer">
+        <img src="../.././../assets/icons/footer.svg" alt="">
+        <img class="avatar" src="../../../assets/images/avatar.svg" alt="">
+    </div>
+</div>
+
+
+    
+
+
+
+
