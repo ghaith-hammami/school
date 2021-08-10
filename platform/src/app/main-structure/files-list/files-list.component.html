@@ -1,0 +1,8 @@
+<div *ngIf="fileUploads">
+    <div>Attachments</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileUploads">
+        <li class="list-group-item">
+            <app-file-details [fileUpload]='file'></app-file-details>
+        </li>
+    </ul>
+</div>

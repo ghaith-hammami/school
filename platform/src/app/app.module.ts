@@ -1,3 +1,4 @@
+//ps: add angular material and firebase 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms'
@@ -24,6 +25,17 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import 'firebase/storage';
 
+//material
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FilesListComponent } from './main-structure/files-list/files-list.component';
+import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +49,8 @@ import 'firebase/storage';
     AdminPageComponent,
     ForumDetailsComponent,
     LandingPageComponent,
+    FilesListComponent,
+    FileDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +60,12 @@ import 'firebase/storage';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

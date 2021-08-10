@@ -1,8 +1,8 @@
 <div class="courses_page padding_page">
   <div class="page_head">
 
-    <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg" 
-      alt=""></h1>
+    <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg"
+       alt=""></h1>
 
     <div class="buttons">
       <div class="button_box">
@@ -22,8 +22,8 @@
       </button>
     </div>
     <!-- Add course part -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
-    aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -32,28 +32,65 @@
           </div>
           <div class="modal-body">
             <div class="add_course">
-              <div class="form">
-                <div class="input_box">
-                  <input type="text">
+              <form class="form" [formGroup]="addCourse" #formDirective="ngForm" 
+              (ngSubmit) = "onSubmit(formDirective)">
+                <!-- <div class="input_box">
+                  <input matInput type="text" formControlName="courseTitle">
                   <span>title</span>
-                </div>
+                </div> -->
+                <mat-form-field appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <input matInput type="text" formControlName="courseTitle">
+                </mat-form-field>
+                <div class="details">
+                 <!--  <label for="subject">Subject</label>
+                  <select name="subject" id="subject" formControlName="courseSubject">
+                    <option *ngFor="let option of subjects; let i = index" [value]="option">
+                      {{option}}
+                    </option>
+                  </select> -->
+                  <mat-form-field appearance="outline">
+                    <mat-label for="courseSubject">Subject</mat-label>
+                    <mat-select id="courseSubject" formControlName="courseSubject">
+                        <mat-option *ngFor="let option of subjects; let i = index" [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+  
+                  <div class="upload-file-section">
+                    <label>
+                      <input
+                        type="file"
+                        class="text-nowrap text-truncate"
+                        (change)="selectFile($event)"/>
+                    </label>
+                    <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+                      Upload
+                    </button>
+                    <div *ngIf="currentFileUpload" class="progress mt-2">
+                      <div
+                        class="progress-bar progress-bar-info"
+                        role="progressbar"
+                        attr.aria-valuenow="{{ percentage }}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        [ngStyle]="{ width: percentage + '%' }">
+                        {{ percentage }}%
+                      </div>
+                    </div>
+                      <app-files-list (FilesToAddWithCourse) = "FilesAttachedToCourse($event)"></app-files-list>
+                  </div>
               </div>
-              <div class="details">
-                <select name="subject" id="subject">
-                  <option>subject</option>
-                </select>
-                <a>add file</a>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">add course</button>
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
               </div>
+              </form>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">add course</button>
-          </div>
-        </div>
+      </div>
       </div>
     </div>
-<!-- add course part ends here -->
+    <!-- add course part ends here -->
 
 
 
@@ -61,8 +98,7 @@
 
 
   <div class="course_cont">
-    <div class="course_div btn-three"
-      *ngFor="let item of courselist| paginate: 
+    <div class="course_div btn-three" *ngFor="let item of courselist| paginate: 
       { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
       <h3>Subject</h3>
       <h2 class="course_title">Course title</h2>

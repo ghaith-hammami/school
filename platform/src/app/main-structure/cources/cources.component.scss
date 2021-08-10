@@ -190,4 +190,40 @@
           width: 100vw;
       }
   }
+  .form {
+      display: flex !important;
+      flex-direction: column !important;
+  }
+
+  .details {
+    display: flex !important;
+    flex-direction: column !important;   
+  }
   
+  .modal-dialog {
+    height: fit-content !important;
+  }
+
+  .modal-title {
+      font-size: 1.5rem;
+  }
+
+ /*  .mat-form-field-appearance-outline form .ng-touched{
+      color: gold;
+  } */
+ 
+  /* hethy tbadel l color mta3 l border, ken tna7ehe ywaly ky yenzel 3aala title par ex
+  w ba3ed yna7y l cursor, ywaly a7mer l border, bon mch mrgla brcha , ama hawka play around with it
+  7awelt 7awelt njmtch haha */
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+    color: #e0e0e0 !important;
+    opacity: 0.6;
+    }
+
+    /* also, as you can see fel browser na3rach chby 3zeh l buttons w lktyba bara mel modal */
+  .modal-content {
+    height: fit-content !important;
+  }
+
+
+
