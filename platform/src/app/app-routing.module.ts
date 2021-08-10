@@ -27,7 +27,11 @@ const routes: Routes = [
   {path:"platform", component:MainStructureComponent, children:[
     {path:"", redirectTo:'home',pathMatch:'full'},
     {path:"home", component:HomeComponent},
-    {path:"courses", component:CourcesComponent},
+    {path:"courses", children: [
+      { path: ":subject", component:CourcesComponent},
+      { path: "all", component:CourcesComponent },
+      { path: "", redirectTo: "all", pathMatch: "full"},
+    ]},
     {path:"forum", component:ForumComponent},
     {path:"admin", component:AdminPageComponent},
   ]},

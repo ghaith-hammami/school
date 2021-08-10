@@ -6,15 +6,50 @@
 
     <div class="buttons">
       <div class="button_box">
-        <div class="btn btn-three">
-          <span>NEW</span>
+        <div class="btn btn-three"
+        [ngStyle]="allCourses == displayedSubject? 
+        {'background-color': '#f8b200', 'color':  'white'} :  
+        {'background-color': 'white', 'color':  '#11161e'}"
+        mat-stroked-button color="primary" 
+        (click) = "selectSubject(allCourses)"
+        routerLink='platform/courses' 
+        [queryParams] = "{ subject: allCourses }" 
+        class="btn btn-three">
+          <span>All</span>
         </div>
-        <div class="btn btn-three">
-          <span>MATH</span>
+        <div class="btn btn-three"
+        *ngFor="let option of subjects; let i = index"
+          [ngStyle]="option.toLowerCase() == displayedSubject? 
+          {'background-color': '#f8b200', 'color':  'white'} :  
+          {'background-color': 'white', 'color':  '#11161e'}"
+          mat-stroked-button color="primary" (click)="changeStyling(option); 
+          selectSubject(option)" 
+          routerLink="['platform/courses']"  
+          [queryParams] = "{ subject: option }">
+          <span>{{option}}</span>
         </div>
-        <div class="btn btn-three">
-          <span>SVT</span>
-        </div>
+        
+        <!-- <button class="btn btn-three"
+          [ngStyle]="allCourses == displayedSubject? 
+          {'background-color': '#3f51b5', 'color':  'white'} :  
+          {'background-color': 'white', 'color':  '#3f51b5'}"
+          class="button" mat-stroked-button color="primary" 
+          (click) = "selectSubject(allCourses)"
+          routerLink='platform/courses' 
+          [queryParams] = "{ subject: allCourses }">
+          All
+        </button>
+  
+        <button class="btn btn-three" *ngFor="let option of subjects; let i = index"
+          [ngStyle]="option.toLowerCase() == displayedSubject? 
+          {'background-color': '#3f51b5', 'color':  'white'} :  
+          {'background-color': 'white', 'color':  '#3f51b5'}"
+          class="button" mat-stroked-button color="primary" (click)="changeStyling(option); 
+          selectSubject(option)" 
+          routerLink="['platform/courses']"  
+          [queryParams] = "{ subject: option }">
+          {{option}}
+        </button> -->
       </div>
 
       <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -96,16 +131,20 @@
 
   </div>
 
-
+ <!-- courses list part -->
   <div class="course_cont">
-    <div class="course_div btn-three" *ngFor="let item of courselist| paginate: 
+    <div class="course_div btn-three" *ngFor="let option of courses| paginate: 
       { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
-      <h3>Subject</h3>
-      <h2 class="course_title">Course title</h2>
+      <h3>{{option.Subject | titlecase}}</h3>
+      <h2 class="course_title">{{option.Title}}</h2>
       <h6>Mr foulen fouleni</h6>
       <div class="preview">
         <a href="#">Preview</a>
         <img src=".././../../assets/icons/preview_arrow.svg" alt="">
+      </div>
+      <div *ngIf="option.files">
+        <strong>Attachments:</strong>
+        <app-course-files [course] = "option"></app-course-files>
       </div>
     </div>
     <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>

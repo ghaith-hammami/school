@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { Course } from 'src/app/model/course';
 import { FileUpload } from 'src/app/model/file-upload.model';
 import { CourseService } from 'src/app/services/course.service';
@@ -24,7 +26,8 @@ export class CourcesComponent implements OnInit {
 
   
   constructor(private courseServices: CourseService,
-    private uploadService: UploadFileService) {
+    private uploadService: UploadFileService, private router: Router, 
+    private activatedRoute: ActivatedRoute) {
     this.addCourse = new FormGroup({
       "courseTitle": new FormControl(null, [Validators.required]),
       "courseSubject": new FormControl(null, [Validators.required])
@@ -90,10 +93,51 @@ export class CourcesComponent implements OnInit {
       );
     }
 
-  ngOnInit(): void {
-  }
+
   page = 1
   courselist = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
   list_length = this.courselist.length
+
+  //courses list logic here
+
+  files: Array<any> = []
+  //this is to help us style the selected subject button
+  displayedSubject = undefined;
+  //courses depends on the the selected subject, that's why we are using if
+  courses: any;
+
+  db = this.courseServices.db
+  //when we want to show all courses
+  allCourses: string = "all"
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {      
+      const subject = params['subject']
+      this.displayedSubject = params['subject']
+      if (subject === this.allCourses) {
+        this.courseServices.getCourses().snapshotChanges().pipe(map(changes => 
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))))
+          .subscribe(rs => {
+            this.courses = rs;
+          })
+      } else {
+        const query = this.db.list('courses', ref => ref.orderByChild('Subject').equalTo(subject))
+        query.snapshotChanges().pipe(map(changes => changes.map((c: any) =>
+          ({ key: c.payload.key, ...c.payload.val() as {} })))).subscribe(res => {
+            this.courses = res;            
+          })
+      }
+    })
+  }
+
+    //redirect to courses in that subject
+    selectSubject(s: any) {
+      this.router.navigate(['platform/courses', s.toLowerCase()])
+    }
+  
+    // change the button (subject selected) styling
+    changeStyling(s: any) {
+      this.displayedSubject = s;
+    }
 
 }

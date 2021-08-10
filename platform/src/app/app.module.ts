@@ -35,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilesListComponent } from './main-structure/files-list/files-list.component';
 import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
 
+import { TitleCasePipe } from '@angular/common';
+import { CourseFilesComponent } from './main-structure/course-files/course-files.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { FileDetailsComponent } from './main-structure/file-details/file-details
     LandingPageComponent,
     FilesListComponent,
     FileDetailsComponent,
+    CourseFilesComponent,
   ],
   imports: [
     BrowserModule,
