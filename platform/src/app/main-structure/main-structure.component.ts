@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-main-structure',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainStructureComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authservice:AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log(this.authservice.isLogedin)
   }
 
 }

@@ -10,6 +10,7 @@ import { StudentLoginComponent } from './login/student-login/student-login.compo
 import { AdminPageComponent } from './main-structure/admin-page/admin-page.component';
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -24,7 +25,7 @@ const routes: Routes = [
     {path:"student_login" ,component:StudentLoginComponent}
   ]},
   
-  {path:"platform", component:MainStructureComponent, children:[
+  {path:"platform",canActivate: [AuthGuard], component:MainStructureComponent, children:[
     {path:"", redirectTo:'home',pathMatch:'full'},
     {path:"home", component:HomeComponent},
     {path:"courses", component:CourcesComponent},
