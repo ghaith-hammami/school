@@ -1,34 +1,24 @@
 <div class="courses_page padding_page">
   <div class="page_head">
 
-    <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg"
-       alt=""></h1>
+    <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg" alt=""></h1>
 
     <div class="buttons">
       <div class="button_box">
-        <div class="btn btn-three"
-        [ngStyle]="allCourses == displayedSubject? 
+        <div class="btn btn-three" [ngStyle]="allCourses == displayedSubject? 
         {'background-color': '#f8b200', 'color':  'white'} :  
-        {'background-color': 'white', 'color':  '#11161e'}"
-        mat-stroked-button color="primary" 
-        (click) = "selectSubject(allCourses)"
-        routerLink='platform/courses' 
-        [queryParams] = "{ subject: allCourses }" 
-        class="btn btn-three">
+        {'background-color': 'white', 'color':  '#11161e'}" mat-stroked-button color="primary"
+          (click)="selectSubject(allCourses)" routerLink='platform/courses' [queryParams]="{ subject: allCourses }"
+          class="btn btn-three">
           <span>All</span>
         </div>
-        <div class="btn btn-three"
-        *ngFor="let option of subjects; let i = index"
-          [ngStyle]="option.toLowerCase() == displayedSubject? 
+        <div class="btn btn-three" *ngFor="let option of subjects; let i = index" [ngStyle]="option.toLowerCase() == displayedSubject? 
           {'background-color': '#f8b200', 'color':  'white'} :  
-          {'background-color': 'white', 'color':  '#11161e'}"
-          mat-stroked-button color="primary" (click)="changeStyling(option); 
-          selectSubject(option)" 
-          routerLink="['platform/courses']"  
-          [queryParams] = "{ subject: option }">
+          {'background-color': 'white', 'color':  '#11161e'}" mat-stroked-button color="primary" (click)="changeStyling(option); 
+          selectSubject(option)" routerLink="['platform/courses']" [queryParams]="{ subject: option }">
           <span>{{option}}</span>
         </div>
-        
+
         <!-- <button class="btn btn-three"
           [ngStyle]="allCourses == displayedSubject? 
           {'background-color': '#3f51b5', 'color':  'white'} :  
@@ -57,18 +47,16 @@
       </button>
     </div>
     <!-- Add course part -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Drop a course</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="add_course">
-              <form class="form" [formGroup]="addCourse" #formDirective="ngForm" 
-              (ngSubmit) = "onSubmit(formDirective)">
+        <form class="form" [formGroup]="addCourse" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Drop a course</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="add_course">
                 <!-- <div class="input_box">
                   <input matInput type="text" formControlName="courseTitle">
                   <span>title</span>
@@ -78,7 +66,7 @@
                   <input matInput type="text" formControlName="courseTitle">
                 </mat-form-field>
                 <div class="details">
-                 <!--  <label for="subject">Subject</label>
+                  <!--  <label for="subject">Subject</label>
                   <select name="subject" id="subject" formControlName="courseSubject">
                     <option *ngFor="let option of subjects; let i = index" [value]="option">
                       {{option}}
@@ -87,42 +75,41 @@
                   <mat-form-field appearance="outline">
                     <mat-label for="courseSubject">Subject</mat-label>
                     <mat-select id="courseSubject" formControlName="courseSubject">
-                        <mat-option *ngFor="let option of subjects; let i = index" [value]="option">{{option}}</mat-option>
+                      <mat-option *ngFor="let option of subjects; let i = index" [value]="option">{{option}}
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
-  
+
                   <div class="upload-file-section">
                     <label>
-                      <input
-                        type="file"
-                        class="text-nowrap text-truncate"
-                        (change)="selectFile($event)"/>
+                      <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
                     </label>
                     <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
                       Upload
                     </button>
-                    <div *ngIf="currentFileUpload" class="progress mt-2">
-                      <div
-                        class="progress-bar progress-bar-info"
-                        role="progressbar"
-                        attr.aria-valuenow="{{ percentage }}"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
+                    <div *ngIf="currentFileUpload && percentage !== undefined" class="progress mt-2">
+                      <div class="progress-bar progress-bar-info" role="progressbar"
+                        attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"
                         [ngStyle]="{ width: percentage + '%' }">
                         {{ percentage }}%
                       </div>
                     </div>
-                      <app-files-list (FilesToAddWithCourse) = "FilesAttachedToCourse($event)"></app-files-list>
+                    <app-files-list (FilesToAddWithCourse)="FilesAttachedToCourse($event)"></app-files-list>
                   </div>
-              </div>
-              <div class="modal-footer">
+                </div>
+                <!-- <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">add course</button>
                 <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+              </div> -->
               </div>
-              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">add course</button>
+              <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
-      </div>
+        </form>
+
       </div>
     </div>
     <!-- add course part ends here -->
@@ -131,24 +118,25 @@
 
   </div>
 
- <!-- courses list part -->
+  <!-- courses list part -->
   <div class="course_cont">
-    <div class="course_div btn-three" *ngFor="let option of courses| paginate: 
+    <div class="course_div btn-three" *ngFor="let option of courses | paginate: 
       { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
       <h3>{{option.Subject | titlecase}}</h3>
       <h2 class="course_title">{{option.Title}}</h2>
       <h6>Mr foulen fouleni</h6>
-      <div class="preview">
+      <!--      <div class="preview">
         <a href="#">Preview</a>
         <img src=".././../../assets/icons/preview_arrow.svg" alt="">
-      </div>
-      <div *ngIf="option.files">
+      </div> -->
+      <div *ngIf="option.files" class="files">
         <strong>Attachments:</strong>
-        <app-course-files [course] = "option"></app-course-files>
+        <app-course-files [course]="option"></app-course-files>
       </div>
     </div>
     <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
   </div>
+  <!-- courses list ends here -->
   <footer>
     <img class="background" src="../../../assets/icons/footer.svg" alt="">
     <img src="../../../assets/images/courses_avatar.svg" class="avatar" alt="">

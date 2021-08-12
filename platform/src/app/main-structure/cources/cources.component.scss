@@ -140,9 +140,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    
       }
       
-      
+      //this solved the problem that the <a>  in course-files is unclickeable.
+      .files {
+         z-index: 9999999;;
+      }
     
 
       
@@ -215,15 +219,52 @@
   /* hethy tbadel l color mta3 l border, ken tna7ehe ywaly ky yenzel 3aala title par ex
   w ba3ed yna7y l cursor, ywaly a7mer l border, bon mch mrgla brcha , ama hawka play around with it
   7awelt 7awelt njmtch haha */
-  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
-    color: #e0e0e0 !important;
-    opacity: 0.6;
-    }
+/*   ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline-thick{
+    color: #b3b3b3 !important;
+    border-width: 1px !important;
+    } */
 
+  /*   ::ng-deep .mat-input-wrapper {
+        color: red;
+        ::ng-deep .mat-form-field-appearance-outline .mat-form-field-invalid .mat-form-field-outline-thick {
+    color: #e0e0e0 !important;
+    border-width: 1px !important;
+    
+    } */
+/* 
+    .mat-input-element.mat-form-field-autofill-control.ng-tns-c70-0.ng-pristine.ng-invalid.cdk-text-field-autofill-monitored.ng-touched {
+        color: gold;
+    }
+     */
+
+/*     .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start,
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+         border-width: 1px !important;
+} */
+
+
+    
     /* also, as you can see fel browser na3rach chby 3zeh l buttons w lktyba bara mel modal */
   .modal-content {
     height: fit-content !important;
   }
 
+  .text-nowrap.text-truncate, .mat-input-element {
+      color: black;
+  }
+ /*  ::ng-deep .mat-form-field.mat-warn.mat-input-element.mat-form-field-invalid.mat-input-element {
+      border-color: chartreuse;
+  }
 
+  ::ng-deep .mat-form-field.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-has-label.ng-star-inserted.ng-touched.ng-dirty.mat-form-field-invalid.ng-invalid.mat-form-field-hide-placeholder {
+      color: green;
+  }
 
+  .mat-input-element::placeholder {
+      color: black;
+  } */
+
+  .add_course {
+      height: fit-content;
+  }

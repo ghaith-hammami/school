@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UploadFileService } from 'src/app/services/upload-file.service';
+import { UploadFileService } from 'app/services/upload-file.service';
 import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-files-list',
   templateUrl: './files-list.component.html',
-  styleUrls: ['./files-list.component.css']
+  styleUrls: ['./files-list.component.scss']
 })
 export class FilesListComponent implements OnInit {
   @Output() FilesToAddWithCourse = new EventEmitter<any>()

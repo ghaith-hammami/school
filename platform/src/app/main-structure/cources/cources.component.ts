@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Course } from 'app/model/course';
+import { FileUpload } from 'app/model/file-upload.model';
+import { CourseService } from 'app/services/course.service';
+import { UploadFileService } from 'app/services/upload-file.service';
 import { map } from 'rxjs/operators';
-import { Course } from 'src/app/model/course';
-import { FileUpload } from 'src/app/model/file-upload.model';
-import { CourseService } from 'src/app/services/course.service';
-import { UploadFileService } from 'src/app/services/upload-file.service';
+
 
 @Component({
   selector: 'app-cources',
@@ -61,21 +62,20 @@ export class CourcesComponent implements OnInit {
     this.submitted = false;
     this.addCourse.reset();
     formDirective.resetForm();
+    this.percentage = undefined;
   }
 
     //upload file
     selectedFiles!: any;
     currentFileUpload!: FileUpload;
-    percentage!: number;
+    percentage!: any;
     FilesAttached!: any;
   
     selectFile(event: any): void {
       this.selectedFiles = event.target.files;
     }
   
-    FilesAttachedToCourse(event: any) {
-      console.log(event);
-      
+    FilesAttachedToCourse(event: any) {      
       this.FilesAttached = event;
     }
   
@@ -91,8 +91,8 @@ export class CourcesComponent implements OnInit {
           console.log(error);
         }
       );
+      this.percentage = undefined;
     }
-
 
   page = 1
   courselist = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
@@ -111,6 +111,8 @@ export class CourcesComponent implements OnInit {
   allCourses: string = "all"
 
   ngOnInit(): void {
+    console.log(this.percentage);
+    
     this.activatedRoute.params.subscribe((params) => {      
       const subject = params['subject']
       this.displayedSubject = params['subject']

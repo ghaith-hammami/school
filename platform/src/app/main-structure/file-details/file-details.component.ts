@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UploadFileService } from 'src/app/services/upload-file.service';
-import { FileUpload } from 'src/app/model/file-upload.model';
+import { FileUpload } from 'app/model/file-upload.model';
+import { UploadFileService } from 'app/services/upload-file.service';
 
 @Component({
   selector: 'app-file-details',
   templateUrl: './file-details.component.html',
-  styleUrls: ['./file-details.component.css']
+  styleUrls: ['./file-details.component.scss']
 })
 export class FileDetailsComponent implements OnInit {
   @Input() fileUpload!: FileUpload;

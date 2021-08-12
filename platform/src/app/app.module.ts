@@ -22,7 +22,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from 'src/environments/environment';
 import 'firebase/storage';
 
 //material
@@ -37,6 +36,7 @@ import { FileDetailsComponent } from './main-structure/file-details/file-details
 
 import { TitleCasePipe } from '@angular/common';
 import { CourseFilesComponent } from './main-structure/course-files/course-files.component';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [
