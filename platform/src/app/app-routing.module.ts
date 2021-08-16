@@ -11,6 +11,9 @@ import { AdminPageComponent } from './main-structure/admin-page/admin-page.compo
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 
 
@@ -25,7 +28,7 @@ const routes: Routes = [
     {path:"student_login" ,component:StudentLoginComponent}
   ]},
   
-  {path:"platform",canActivate: [AuthGuard], component:MainStructureComponent, children:[
+  {path:"platform",canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }, component:MainStructureComponent, children:[
     {path:"", redirectTo:'home',pathMatch:'full'},
     {path:"home", component:HomeComponent},
     {path:"courses", component:CourcesComponent},

@@ -47,16 +47,5 @@ export class AuthService {
       }
     );
   }
-  isLoggedIn() {
-    return this.afAuth.authState.pipe(first()).toPromise();
- }
- async doSomething() {
-  const user = await this.isLoggedIn()
-  if (user) {
-    this.isLogedin= true
-  } else {
-    this.isLogedin= false
-}}
-
 
 }
