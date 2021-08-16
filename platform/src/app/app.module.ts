@@ -17,6 +17,7 @@ import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AdminPageComponent,
     ForumDetailsComponent,
     LandingPageComponent,
+    
   ],
   imports: [
     BrowserModule,

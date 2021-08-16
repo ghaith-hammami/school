@@ -2,6 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+
+.light-theme{
+  --default_text_color:#20558B;
+  --primary_color :#FF9900;
+  --secondary_color : #080C1D;
+  --background_color :#EDF2F5;
+  --primary_btn :#FF9900;
+  --secondary_btn :rgb(223, 223, 223);
+}
+  
+
+.dark-theme{
+  --default_text_color:#EDF2F5;
+  --primary_color :#20558B;
+  --secondary_color : #EDF2F5;
+  --background_color :linear-gradient(180deg, #000033 0%, #000000 100%);;
+  --primary_btn :#FF9900;
+  --secondary_btn :#20558B;
+}
+
+
+
 *{
       margin:0;
       padding: 0;
@@ -9,13 +31,18 @@
       font-family: 'roboto' ,sans-serif;
 }
 html{
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+
+}
+@media screen and (max-width:450px) {
+  html{
+    font-size: 12px;
+  }
 }
 .padding_page{
   padding: 0 10vw;
-    padding-top: 10vh;
 }
 ::-webkit-scrollbar {
       width: 5px;
@@ -23,12 +50,13 @@ html{
     }
     ::-webkit-scrollbar-button{display:none;}
     ::-webkit-scrollbar-thumb {
-      background: #F8B200; 
+      background:  linear-gradient(118.44deg, #004EFF 48.78%, #4200FF 87.84%);; 
       border-radius: 30px;
       height: .2rem;
     }
     ::-webkit-scrollbar-track {
       border-radius: 30px;
+      background-color:#0B174B
     }
 
 
@@ -91,7 +119,7 @@ html{
 
 //filter_btn
 .btn-three {
-  color: #FFF;
+  color: var(--secondary_color);
   transition: all 0.5s;
   position: relative;
   margin-right: 0.2rem;
@@ -104,7 +132,8 @@ html{
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(255,255,255,0.1);
+  background-color: var(--);
+  
   transition: all 0.3s;
 }
 .btn-three:hover::before {
@@ -135,4 +164,87 @@ html{
   left: -30vw;
   height: 100%;
 }
+
+//animated bg
+@function multiple-box-shadow ($n){ 
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n{
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';}
+  @return unquote($value)
+  
+}
+$shadows-small:  multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big:    multiple-box-shadow(100);
+// n is number of stars required
+
+
+#stars{
+  
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animStar 50s linear infinite;
+    
+  &:after{
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }}
+#stars2{
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation			: animStar 100s linear infinite;
+    
+  &:after{
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+}}
+#stars3{
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation	: animStar 150s linear infinite;
+  &:after{
+    content: " ";
+    position: absolute;
+    top: 2000px;;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+    
+@keyframes animStar{
+  from	{
+    transform: translateY(0px)}
+  to	{	
+    transform: translateY(-2000px)}
+}
+
+
+.footer{
+  margin-top: 2rem;
+  width: 100vw;
+  background: linear-gradient(155deg, #FF9900 8.07%, #FF9900 29.67%, #080C1D 29.68%, #080C1D 60.42%, #113E99 60.42%);;;
+  height: 40vh;
+  position: relative;
+}
+
+
 

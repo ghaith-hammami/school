@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
   //classes logic
   classes=[
@@ -22,34 +23,11 @@ export class HomeComponent implements OnInit {
    length = this.classes.length
 
    //news
-   news =[{
-    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    type : "absence",
-    attachement_URL :"",
-    day : "09",
-    month : "may"
-  },
-  {
-    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    type : "event",
-    attachement_URL :"https://github.com",
-    day : "25",
-    month : "apr"
-  },
-  {
-    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500",
-    type : "i dont know ",
-    attachement_URL :"",
-    day : "30",
-    month : "fev"
-  },
-  {
-    text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.ajic jeirt ls,cjeua doiu oeijf oasn plja",
-    type : "absence; orent ",
-    attachement_URL :"",
-    day : "11",
-    month : "apr"
-  }]
+  news =[1,2,3,4,5,6,7,8,9]
   
+  scroll(el:HTMLElement){
+    console.log(el)
+  }
+
 
 }

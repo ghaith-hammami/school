@@ -1,76 +1,45 @@
-<div class="home_cont padding_page">
-      <!--news-->
-      <div>
-      <h3>news</h3>
-            <div id="carouselExampleCaptions" class="news carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <div class="news_img"></div>
-                      <div class="description">
-                        <div class="text">
-                          <h5>First slide label</h5>
-                          <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                        <div class="date">
-                          
-                              <h2>09</h2>
-                              <p>may</p>
-                        
-                        </div>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <div class="news_img"></div>
-                      <div class="description">
-                        <div class="text">
-                          <h5>First slide label</h5>
-                          <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                        <div class="date">
-                          
-                              <h2>09</h2>
-                              <p>may</p>
-                        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-            </div>
-
+<div class="home_page">
+ 
+  <div class="news_section">
+    <div class="big_new">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      
+      <div class="carousel-inner">
+        <div  *ngFor="let big_new of news ; let big_index =index" active="big_new.active"  [ngClass]="{active: big_index==0}"  class="carousel-item" >
+          <img src="../../../assets/images/news1.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>{{big_index}}</h3>
+            <p>Some representative placeholder content for the first slide.</p>
           </div>
-
-
-
-
-
-
-
-
-
-      <!--classes-->
-            <div class="class_section class">
-                  <h3><span class="length">{{length}}</span>Classrooms available</h3>
-                  <div class="slider">
-                        <div class="class_cont">
-                              <div class="slide_class" *ngFor="let class of classes ;let i=index" [ngClass]="{'margin': i%2==0}">                           
-                                    <div class="class_id">{{class.id}}</div>
-                                    <div class="sector">Sector {{class.sector}}:</div>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-
-      <!--motivation-->
-      <div class="motivation">
-
+        </div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
 
+
+
+
+    <div class="small_news_cont">
+      <div attr.id="{{i}}" data-bs-target="#carouselExampleCaptions" *ngFor="let small_new of news ; let i =index" attr.data-bs-slide-to={{i}}  class="small_new">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../../../assets/images/news1.jpg" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{i}}</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 </div>

@@ -1,5 +1,27 @@
 <div class="all_page">
   <div class="bundle">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form">
+            <label for="title">post title</label>
+        <input name="title" type="text" placeholder="title...">
+        <label for="post_text">post body</label>
+        <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
+      </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Create post</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- <div class="quote index">
       <img src="../../../assets/icons/quote.svg" alt="">
       <h1>lorem ipsum dolor dolor dolores bellisima collateral </h1>
@@ -30,28 +52,7 @@
         New post
       </button> 
 
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="form">
-              <label for="title">post title</label>
-          <input name="title" type="text" placeholder="title...">
-          <label for="post_text">post body</label>
-          <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
-        </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Create post</button>
-            </div>
-          </div>
-        </div>
-      </div>
+     
       
       
     
@@ -75,10 +76,10 @@
       </div>
       <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
       <div class="footer">
-        <img src="../.././../assets/icons/footer.svg" alt="">
         <img class="avatar" src="../../../assets/images/avatar.svg" alt="">
     </div>
 </div>
+
 
 
     

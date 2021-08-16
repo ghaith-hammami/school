@@ -1,10 +1,12 @@
-
+@use "../../../styles";
   .index{
     z-index: 3;
   }
-
+.all_page{
+  background:var(--background_color);
+}
 .posts_page{
-  color: silver;
+  color: var(--default_text_color);
   font-family: 'roboto';
   height: 100%;
   display: flex;
@@ -16,9 +18,10 @@
       font-weight: bold;
       margin-bottom: 1.5rem;
   }
-  background:linear-gradient(#004185,#000);
+  
 }
 .bundle{
+  background:transparent;
   .bundle_img{
     width: 100%;
     height: auto;
@@ -27,7 +30,6 @@
     left: 0;
     
   }
-  background:#151c26;
   width: 100%;
   height: 80vh;
   position: relative;
@@ -59,7 +61,7 @@
   }
   span{
     font-family: 'El Messiri', sans-serif;
-    color: #F8B200;
+    color: s;
   }
   h5{
     text-align: center;
@@ -111,10 +113,10 @@ background-color: #ffb700  ;
   height: fit-content;
 }
 .add_post_btn{
-  height: 50%;
-  align-self: flex-end;
-  color: #F8B200;
-  width: 9rem;
+    height: 2.5rem;
+    align-self: flex-end;
+    color:var(--primary_btn);
+    width: 9rem;
 }
 
 .modal-content{
@@ -147,14 +149,14 @@ background-color: #ffb700  ;
         width: 100%;
         padding: 1rem 0.5rem;
       &:hover{
-        background-color: #1f324e;
+        background-color: #1f324e5d;
       }
       transition: 0.2s;
     .blog_title{
       font-size: 22px;
       font-weight: bold;
       margin-right: 1rem;
-      color: #F8B200;
+      color: var(--primary_color);
     }
     .text{
       font-size: 14px;
@@ -176,17 +178,21 @@ background-color: #ffb700  ;
 
   
   .footer{
-    position: relative;
+   
     img{
-      width: 100vw;
+      height: 110%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   }
   
   .my-pagination::ng-deep{
     margin-top: 1rem;
     .current{
-      background-color: #F8B200;
+      background-color: var(--primary_color);
     }
+    color: var(--default_text_color);
   }
 
   

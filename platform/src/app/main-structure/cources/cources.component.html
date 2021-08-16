@@ -3,21 +3,9 @@
         
           <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg" alt=""></h1>
           
-          <div class="buttons">
-          <div class="button_box">
-            <div class="btn btn-three">
-              <span>NEW</span>
-            </div>
-            <div class="btn btn-three">
-              <span>MATH</span>
-            </div>
-            <div class="btn btn-three">
-              <span>SVT</span>
-            </div>
-        </div>
+        
+         
 
-        <button class="btn btn-one btn_height"  data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
-      </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -54,8 +42,23 @@
       
       </div>
 
-        
+      <div class="buttons">
+        <div class="button_box">
+          <div class="btn btn-three">
+            <span>NEW</span>
+          </div>
+          <div class="btn btn-three">
+            <span>MATH</span>
+          </div>
+          <div class="btn btn-three">
+            <span>SVT</span>
+          </div>
+        </div>
+        <button class="btn btn-one btn_height"  data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
+
+      </div>
           <div class="course_cont">
+            
             <div class="course_div btn-three" *ngFor="let item of courselist| paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
               <h3>Subject</h3>
               <h2 class="course_title">Course title</h2>
@@ -67,8 +70,8 @@
             </div>
             <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
           </div>
-          <footer>
-            <img class="background" src="../../../assets/icons/footer.svg" alt="">
+          <footer class="footer">
+            
             <img src="../../../assets/images/courses_avatar.svg" class="avatar" alt="">
           </footer>
     </div>

@@ -1,4 +1,5 @@
 .login_page_container{
+    background:radial-gradient(ellipse at bottom,#162b75 0%, #0B194E 19.71%, #07002e 80%,rgb(0, 0, 0) 100%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -6,22 +7,19 @@
     justify-content: space-between;
     font-family: 'roboto',sans-serif;
     position: relative;
-}
-img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1; 
+    //background: linear-gradient(180deg, );
+    padding: 2rem 10rem;
+    color: white;
+    overflow: hidden;
 }
 .login_form{
-    padding: 2rem 1.5rem;
-    flex-basis: 45%;
+    flex-basis: 50%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    .form{
-        width: 20.69rem ;
+    align-items: flex-start;
+    .form{ 
+        width: 21rem;
         height: 30rem;
         display: flex;
         flex-direction: column;
@@ -37,8 +35,8 @@ img{
         }
         .nav-link{
             border-radius: 0;
-            background-color: #E6FBFF;
-            color: black;
+            background-color: #0B1649;
+            color: white;
             font-weight: bold;
             font-family: 'roboto',sans-serif;
         }
@@ -46,26 +44,14 @@ img{
     }
 }
 .active{
-    background-color: #F8B200 !important;
+    background-color: #0652FD !important;
 }
-.image{
-    position: relative;
-    height: 100%;
-    flex-basis: 60%;
-    flex-grow: 1;
-    background:url(../../assets/images/login_img.jpg) center no-repeat;
-    background-size: cover;
-    &::after{
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(255, 184, 0, 0.1);
+img{
+    width: 40%;
+    height: auto;
 
-    }
 }
+
 @media screen and (max-width:450px){
     .login_page_container,.form{
         font-size: 90%;  
@@ -78,3 +64,5 @@ img{
         width: 17rem !important ;
     }
 }
+
+

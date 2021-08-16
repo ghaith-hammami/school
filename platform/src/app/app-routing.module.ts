@@ -13,10 +13,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 
-const routes: Routes = [
 
+const routes: Routes = [
   {path:"welcome" ,component:LandingPageComponent},
   {path:"", redirectTo:'welcome',pathMatch:'full'},
+  
 
   {path:"login", component:LoginComponent ,children:[
     {path:"", redirectTo:'student_login',pathMatch:'full'},
