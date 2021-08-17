@@ -1,5 +1,5 @@
 .courses_page{
-    color: white;
+    color: #000;
       font-family: 'roboto';
       height: 100%;
       display: flex;
@@ -13,11 +13,13 @@
           position: relative;
       }
       
-      background: linear-gradient(#151c26,#000);
+      background: var(--background_color)
   }
   .page_head{
-      height: 60vh;
-      width: 100%;
+      background: url(../../../assets/images/tom-hermans-9BoqXzEeQqM-unsplash.jpg) no-repeat top;
+      background-size: cover;
+      height: 70vh;
+      width: 100vw;
       margin-bottom: 2rem;
       display: flex;
       flex-direction: column;
@@ -33,6 +35,7 @@
       width: 10rem;
   }
   .btn-one{
+      width: 9rem;
       color: #F8B200;
   }
   .modal-header{
@@ -43,16 +46,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: absolute;
-      bottom: 0;
+      margin-bottom: 2rem;
   }
   .button_box{
       display: flex;
       width: fit-content;
       height: fit-content;
-  }
-  .filter_btn .active{
-      background-color: #05FF00;
   }
   .btn_height{
       height: 2.5rem;
@@ -111,7 +110,7 @@
   }
   
   .btn-primary{
-    background-color:#F8B200 ;
+    background-color:var(--primary_btn);
     border: none;
   }
   .modal-title{
@@ -149,7 +148,7 @@
       
   .course_div{
       h3{
-          color: #F8B200;
+          color: var(--primary_color);
       }
       margin-bottom: 1rem;   
     width: 100%;
@@ -160,10 +159,12 @@
       .course_title{
           font-size: 1rem;
           font-weight: bold;
+          color: var(--secondary_color)
       }
       h6{
           font-size: 0.8rem;
           font-weight: 400;
+          color: var(--secondary_color);
       }
       a{
           color: #4F00F8;
@@ -176,18 +177,16 @@
   .my-pagination::ng-deep{
     margin-top: 1rem;
     .current{
-      background-color: #F8B200;
+      background-color: var(--primary_btn);
     }
+    color: var(--default_text_color);
   }
   footer{
-      position: relative;
-      width: 100vw;
+    
       .avatar{
           right: 0;
           left: auto;
-      }
-      .background{
-          width: 100vw;
+          height: 50vh;
       }
   }
   

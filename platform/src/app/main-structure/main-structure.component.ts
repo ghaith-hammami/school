@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsiteThemeService } from '../website-theme.service';
 
 @Component({
   selector: 'app-main-structure',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainStructureComponent implements OnInit {
 
-  constructor() { }
+  constructor(private theme_ser: WebsiteThemeService) { }
+
+  theme = ''
 
   ngOnInit(): void {
+  }
+
+  switchTheme() {
+    this.theme_ser.sendClickEvent()
   }
 
 }

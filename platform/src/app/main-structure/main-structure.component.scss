@@ -1,19 +1,32 @@
 
+.theme_switch{
+    z-index: 5;
+    width: 30px;
+    height: 30px
+  }
 .offcanvas{
+    padding: 2rem 0;
     background: transparent;
     width: fit-content;
     border: none;
-    height: 50%;
-    position: absolute;
-    
-    top: 50%;
-    transform: translateY(-50%);
+    height: 100%;
+    position: fixed;
     left: 6rem;
+    .offcanvas-header{
+        height: 15vh;
+    }
     .offcanvas-body{
         padding: 2rem 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        //background-color: yellow;
+    }
+    .offcanvas-footer{
+        height: 15vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .flex{    
         &:hover {
@@ -58,25 +71,20 @@
     
 }
 
+
 .navigation{
     width: 100vw;
     height: 10vh;
-    background-color:transparent;
-    padding:0 10vw ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
+    background:linear-gradient(#20558B 0% ,rgba(255, 255, 255, 0) 100%); 
+    position:fixed;
     z-index: 3;
-    top: 0;
-    left: 0;
+    top: 0rem;
+    left: 0rem;
 }
 .mask{
 padding: 0;
     width: 100vw;
     height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
 } 
 .outlet{
     width: 100%;
@@ -84,24 +92,16 @@ padding: 0;
     
 }
 .burger{
-    width: 50px;
+    width: 30px;
     height: auto;
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
     z-index: 3;
     fill: #4F00F8;
-}
-@media screen and (max-width: 450px) {
-    .offcanvas{
-        width: 100%;
-    }
-    .navigation{
-        background-color: white;
-    }
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
 
 }
+
 .profile_cont{
     h5{
         font-weight: bold;
@@ -112,4 +112,52 @@ padding: 0;
     }
 }
 
+//mode switch
+.toggle {
+    --size: 2rem;
+    
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    
+    width: var(--size);
+    height: var(--size);
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: 999px;
+    color: hsl(240, 100%, 95%);
+    
+    transition: all 500ms;
+    
+    &:checked {
+      --ray-size: calc(var(--size) * -0.4);
+      --offset-orthogonal: calc(var(--size) * 0.65);
+      --offset-diagonal: calc(var(--size) * 0.45);
+  
+      transform: scale(0.75);
+      color: hsl(40, 100%, 50%);
+      box-shadow: 
+        inset 0 0 0 var(--size),
+        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+        var(--offset-orthogonal) 0 0 var(--ray-size),
+        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+        0 var(--offset-orthogonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+      ;
+    }
+  }
+
+
+  
+@media screen and (max-width: 450px) {
+    .offcanvas{
+        width: 100%;
+    }
+    .navigation{
+        background-color: white;
+    }
+
+}
 
