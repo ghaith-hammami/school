@@ -17,6 +17,13 @@ import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+//firebase
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
+import 'firebase/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +42,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
