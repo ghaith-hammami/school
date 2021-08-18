@@ -1,5 +1,18 @@
 <div class="control_page padding_page">
+    <h1 class="title">Classrooms Control Center :</h1>
+    <div class="button_box">
+        <div class="btn btn-three">
+          <span>Empty</span>
+        </div>
+        <div class="btn btn-three">
+          <span>A.C</span>
+        </div>
+        <div class="btn btn-three">
+          <span>Temp</span>
+        </div>
+      </div>
     <div class="class_cont">
+       
     <div class="class_div" [ngClass]="{'no_empty': empty==='not available', 'empty': empty }">
         <div class="class_num">
             <h1>21</h1><span>section:° 4</span>
@@ -12,9 +25,12 @@
             <p *ngIf="true">Linghting :<input type="checkbox" id="light" /><label for="light">Toggle</label></p>
             
         </div>
-        <p class="class_state"  [ngClass]="{'no_available': empty==='not available', 'available':  empty==='available'}">{{empty}}</p>
+        <p class="class_state available_tag"  [ngClass]="{'no_available': empty==='not available', 'available':  empty==='available'}">{{empty}}</p>
 
     </div>
 </div>
 
 </div>
+
+
+
