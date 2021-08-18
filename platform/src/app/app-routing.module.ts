@@ -10,6 +10,7 @@ import { StudentLoginComponent } from './login/student-login/student-login.compo
 import { AdminPageComponent } from './main-structure/admin-page/admin-page.component';
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ClassControlComponent } from './main-structure/class-control/class-control.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path:"courses", component:CourcesComponent},
     {path:"forum", component:ForumComponent},
     {path:"admin", component:AdminPageComponent},
+    {path: "class_control", component: ClassControlComponent}
   ]},
   
   {path:"forum_details", component:ForumDetailsComponent},

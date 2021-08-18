@@ -1,206 +1,100 @@
-*{
-  font-family: 'roboto' ,sans-serif;
+.forum_post_page {
+  background-color: var(--background_color);
 }
-.back{
-    position: relative;
+.page_head {
+  padding: 2rem 10vw;
+  height: 20vh;
+  background-color: var(--secondary_btn);
+}
+.side_details {
+  font-size: 0.7rem;
+  color: var(--secondary_color);
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary_color);
+}
+main {
+  padding: 0 5vw;
+  padding-top: 10vh;
+  background-color: var(--background_color);
+}
+.post_cont {
+  padding: 4rem 5vw;
+  background-color: var(--secondary_btn);
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post_content {
+  flex-basis: 90%;
+  text-align: justify;
+}
+.like {
+  &:hover {
+    svg path:last-child {
+      transform: translateY(-10px);
+      transition: 0.5s;
+    }
+  }
+  p {
+    margin-top: 0.7rem;
+  }
+  text-align: center;
+}
+
+.add_comment {
+  padding: 0 5vw;
+  padding-top: 2rem;
+  textarea {
+    width: 100%;
+    height: 10rem;
+  }
+}
+.comment_section {
+  margin-top: 4rem;
   width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: whitesmoke;
-  margin: 0;
+  height: fit-content;
+}
+.btn {
+  margin-top: 1rem;
+}
+.comment {
+  border-bottom: 1px solid rgba(121, 121, 121, 0.5);
+  padding: 0 5vw;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+.content {
+  padding: 0.5rem 0;
+  flex-basis: 90%;
+  text-align: justify;
+  h4 {
+    font-size: 1.3rem;
+  }
+  h6 {
+    display: inline;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+}
+.profile {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  .picture {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: aqua;
+    margin-bottom: 3rem;
+  }
 }
-  .back::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f8f8f8;
-    flex-direction: column;
-  }
-  .Titel{
-    top: 0;
-    width: 100%;
-    height: 100px;
-    border-left: 1px solid #e6fbff ;
-    border-top: 1px solid  #e6fbff ;
-    border-right: 1px solid #e6fbff ;
-    border-bottom: 1px solid  #e6fbff ;
-    background-color: white;
-  } 
-  .question{
-    color: #0094FF;
-    font-size: 30px;
-  }
-  .container{
-    margin-left: 100px;
-    margin-top: 20px;
-  }
-  .box{
-    width: 90%;
-    height: 200px;
-    border-left: 1px solid  white;
-    border-top: 1px solid white ;
-    border-right: 1px solid white;
-    border-bottom: 1px solid white ;
-    background-color: #f8f8f8;
-    margin-left: 50px;
-  }   
-  .titel1{
-    margin-left: 50px;
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    font-style: normal;
-  } 
-  .part2{
-    background-color: white;
-    border-left: 1px solid #e6fbff ;
-    border-top: 1px solid  #e6fbff ;
-    border-right: 1px solid #e6fbff ;
-    border-bottom: 1px solid  #e6fbff ;
-    margin-top: 50px;
-    height: auto;
-    width: 80%;
-    margin-left: 10%;
-    justify-content: center;
-  } 
-  .part3{
-    background-color: white;
-    border-left: 1px solid #e6fbff ;
-    border-top: 1px solid  #e6fbff ;
-    border-right: 1px solid #e6fbff ;
-    border-bottom: 1px solid  #e6fbff ;
-    height: auto;
-    width: 80%;
-    margin-left: 10%;
-    justify-content: center;
-  } 
-  .submit{
-    width: 150px;
-  padding: 10px 30px;
-  cursor: pointer;
-  display: block;
-  margin: auto;
-  background: #f8b200;
-  border: 0;
-  outline: none;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-left: 80%;
-  }  
-  .Btn{
-    width: 100px;
-  padding: 10px 30px;
-  cursor: pointer;
-  display: block;
-  margin: auto;
-  background: #f8b200;
-  border: 0;
-  outline: none;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-left: 200px;
-  }  
-  .paragraphe{
-    margin-left: 100px;
-    margin-top: 35px;
-    margin-bottom: 20px;
-    margin-right: 81px;
-    color: black;
-    text-align: left;
-  } 
-  @media screen and (max-width: 950px){
-    .Titel{
-      width: 100%;
-    } 
-    .part3{
-      height: 200px;
-      width: 850px;
-      margin-left: 0;
-      justify-content: center;
-    } 
-    .part2{
-      height: 400px;
-      width: 850px;
-      margin-left: 0;
-      justify-content: center;
-    }
-    .box{
-      width: 85%;
-      height: 125px;
-    } 
-    .Btn{
-      margin-left: 10%;
-    } 
-    .submit{
-    margin-bottom: 20px;
-    margin-left: 80%;
-    }
-  } 
-  @media screen and (max-width: 700px){
-    .Titel{
-      width: 100%;
-    } 
-    .part3{
-      height: 300px;
-      width: 650px;
-      margin-left: 0;
-      justify-content: center;
-    } 
-    .part2{
-      height: 500px;
-      width: 650px;
-      margin-left: 0;
-      justify-content: center;
-    }
-    .box{
-      width: 80%;
-      height: 200px;
-    } 
-    .Btn{
-      margin-left: 10%;
-    } 
-    .submit{
-      margin-bottom: 20px;
-      margin-left: 80%;
-      }
-  } 
-  @media screen and (max-width: 500px){
-     .Titel{
-      height: 100%;
-      width: 450px;
-    } 
-    .part3{
-      height: 400px;
-      width: 450px;
-      margin-left: 0;
-      justify-content: center;
-    } 
-    .part2{
-      height: 650px;
-      width: 450px;
-      margin-left: 0;
-      justify-content: center;
-    }
-    .box{
-      width: 80%;
-      height: 300px;
-    } 
-    .Btn{
-      margin-left: 10%;
-    }  
-    .paragraphe{
-      margin-left: 25px;
-    } 
-    .container{
-      margin-left: 25px;
-    }  
-    .submit{
-      margin-bottom: 20px;
-      margin-left: 80%;
-      }
-
-  } 

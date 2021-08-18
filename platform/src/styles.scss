@@ -1,67 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri&display=swap");
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-.light-theme{
-  --default_text_color:#20558B;
-  --primary_color :#FF9900;
-  --secondary_color : #080C1D;
-  --background_color :#EDF2F5;
-  --primary_btn :#FF9900;
-  --secondary_btn :rgb(223, 223, 223);
-}
-  
-
-.dark-theme{
-  --default_text_color:#EDF2F5;
-  --primary_color :#20558B;
-  --secondary_color : #EDF2F5;
-  --background_color :linear-gradient(180deg, #000033 0%, #000000 100%);;
-  --primary_btn :#FF9900;
-  --secondary_btn :#20558B;
+.light-theme {
+  --default_text_color: #20558b;
+  --primary_color: #ff9900;
+  --secondary_color: #080c1d;
+  --background_color: #edf2f5;
+  --primary_btn: #ff9900;
+  --secondary_btn: rgb(223, 223, 223);
+  --divs_bg: rgb(223, 223, 223);
 }
 
-
-
-*{
-      margin:0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'roboto' ,sans-serif;
+.dark-theme {
+  --default_text_color: #edf2f5;
+  --primary_color: #20558b;
+  --secondary_color: #edf2f5;
+  --background_color: linear-gradient(180deg, #000033 0%, #000000 100%);
+  --primary_btn: #ff9900;
+  --secondary_btn: #20558b;
+  --divs_bg: #1c1c66;
 }
-html{
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "roboto", sans-serif;
+}
+html {
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-
 }
-@media screen and (max-width:450px) {
-  html{
+body {
+  transition: 0.5s;
+}
+@media screen and (max-width: 450px) {
+  html {
     font-size: 12px;
   }
 }
-.padding_page{
+.padding_page {
   padding: 0 10vw;
+  padding-top: 9vh;
 }
 ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    ::-webkit-scrollbar-button{display:none;}
-    ::-webkit-scrollbar-thumb {
-      background:  linear-gradient(118.44deg, #004EFF 48.78%, #4200FF 87.84%);; 
-      border-radius: 30px;
-      height: .2rem;
-    }
-    ::-webkit-scrollbar-track {
-      border-radius: 30px;
-      background-color:#0B174B
-    }
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(118.44deg, #004eff 48.78%, #4200ff 87.84%);
+  border-radius: 30px;
+  height: 0.2rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 30px;
+  background-color: #0b174b;
+}
 
-
-    /*btn animation*/
-    @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+/*btn animation*/
+@import "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300";
 
 /* 
 ========================
@@ -69,7 +73,7 @@ html{
 ========================
 */
 .btn-one {
-  color: #FFF;
+  color: #fff;
   transition: all 0.3s;
   position: relative;
 }
@@ -77,7 +81,7 @@ html{
   transition: all 0.3s;
 }
 .btn-one::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -90,19 +94,19 @@ html{
   border-bottom-width: 1px;
   border-top-style: solid;
   border-bottom-style: solid;
-  border-top-color: #F8B200;
-  border-bottom-color: #F8B200;
+  border-top-color: #f8b200;
+  border-bottom-color: #f8b200;
   transform: scale(0.1, 1);
 }
 .btn-one:hover {
   letter-spacing: 2px;
 }
 .btn-one:hover::before {
-  opacity: 1; 
-  transform: scale(1, 1); 
+  opacity: 1;
+  transform: scale(1, 1);
 }
 .btn-one::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -110,10 +114,10 @@ html{
   height: 100%;
   z-index: 1;
   transition: all 0.3s;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .btn-one:hover::after {
-  opacity: 0; 
+  opacity: 0;
   transform: scale(0.1, 1);
 }
 
@@ -125,7 +129,7 @@ html{
   margin-right: 0.2rem;
 }
 .btn-three::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -133,15 +137,15 @@ html{
   height: 100%;
   z-index: 1;
   background-color: var(--);
-  
+
   transition: all 0.3s;
 }
 .btn-three:hover::before {
-  opacity: 0 ;
-  transform: scale(0.5,0.5);
+  opacity: 0;
+  transform: scale(0.5, 0.5);
 }
 .btn-three::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -150,15 +154,15 @@ html{
   z-index: 1;
   opacity: 0;
   transition: all 0.3s;
-  border: 1px solid rgba(255,255,255,0.5);
-  transform: scale(1.2,1.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform: scale(1.2, 1.2);
 }
 .btn-three:hover::after {
   opacity: 1;
-  transform: scale(1,1);
+  transform: scale(1, 1);
 }
 //avatar
-.avatar{
+.avatar {
   position: absolute;
   bottom: 0;
   left: -30vw;
@@ -166,62 +170,59 @@ html{
 }
 
 //animated bg
-@function multiple-box-shadow ($n){ 
-  $value: '#{random(2000)}px #{random(2000)}px #FFF';
-  @for $i from 2 through $n{
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';}
-  @return unquote($value)
-  
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+  @return unquote($value);
 }
-$shadows-small:  multiple-box-shadow(700);
+$shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
-$shadows-big:    multiple-box-shadow(100);
+$shadows-big: multiple-box-shadow(100);
 // n is number of stars required
 
-
-#stars{
-  
+#stars {
   width: 1px;
   height: 1px;
   background: transparent;
   box-shadow: $shadows-small;
   animation: animStar 50s linear infinite;
-    
-  &:after{
+
+  &:after {
     content: " ";
     position: absolute;
-    top: 2000px;
     width: 1px;
     height: 1px;
     background: transparent;
     box-shadow: $shadows-small;
-  }}
-#stars2{
+  }
+}
+#stars2 {
   width: 2px;
   height: 2px;
   background: transparent;
   box-shadow: $shadows-medium;
-  animation			: animStar 100s linear infinite;
-    
-  &:after{
+  animation: animStar 100s linear infinite;
+
+  &:after {
     content: " ";
     position: absolute;
-    top: 2000px;
     width: 2px;
     height: 2px;
     background: transparent;
     box-shadow: $shadows-medium;
-}}
-#stars3{
+  }
+}
+#stars3 {
   width: 3px;
   height: 3px;
   background: transparent;
   box-shadow: $shadows-big;
-  animation	: animStar 150s linear infinite;
-  &:after{
+  animation: animStar 150s linear infinite;
+  &:after {
     content: " ";
     position: absolute;
-    top: 2000px;;
     width: 3px;
     height: 3px;
     background: transparent;
@@ -229,19 +230,36 @@ $shadows-big:    multiple-box-shadow(100);
   }
 }
 
-    
-@keyframes animStar{
-  from	{
-    transform: translateY(0px)}
-  to	{	
-    transform: translateY(-2000px)}
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 }
 
-
-.footer{
+.footer {
   margin-top: 2rem;
   width: 100vw;
-  background: linear-gradient(155deg, #FF9900 8.07%, #FF9900 29.67%, #080C1D 29.68%, #080C1D 60.42%, #113E99 60.42%);;;
+  background: linear-gradient(155deg, #ff9900 8.07%, #ff9900 29.67%, #080c1d 29.68%, #080c1d 60.42%, #113e99 60.42%);
   height: 40vh;
   position: relative;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  z-index: 99999 !important;
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

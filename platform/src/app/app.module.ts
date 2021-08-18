@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,18 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import 'firebase/storage';
 
+//angular material
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { CourseFilesComponent } from './main-structure/course-files/course-files.component';
+import { FilesListComponent } from './main-structure/files-list/files-list.component';
+import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
+import { ClassControlComponent } from './main-structure/class-control/class-control.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +49,10 @@ import 'firebase/storage';
     AdminPageComponent,
     ForumDetailsComponent,
     LandingPageComponent,
+    CourseFilesComponent,
+    FilesListComponent,
+    FileDetailsComponent,
+    ClassControlComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +61,14 @@ import 'firebase/storage';
     NgxPaginationModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
