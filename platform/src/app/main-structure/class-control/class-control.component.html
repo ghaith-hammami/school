@@ -1,11 +1,12 @@
 <div class="control_page padding_page">
     <div class="class_cont">
-    <div class="class_div" [ngClass]="{'no_empty': empty==='not available', 'empty': empty }">
+    <!-- <div class="class_div" [ngClass]="{'no_empty': empty==='not available', 'empty': empty }">
         <div class="class_num">
             <h1>21</h1><span>section:° 4</span>
         </div>
         <div class="info">
-            <p>Temp :<span>24°C</span></p>
+            <p>Temperature :<span>24°C</span></p>
+            <p class="humidity">Humidity :<span>22%</span></p>
             <p>A.C State :<input type="checkbox" id="AC_state" /><label for="AC_state">Toggle</label></p>
             <p *ngIf="true">Fire System :<input type="checkbox" id="fire" /><label for="fire">Toggle</label></p>
             <p *ngIf="true">Anti_theft :<input type="checkbox" id="theft" /><label for="theft">Toggle</label></p>
@@ -14,7 +15,121 @@
         </div>
         <p class="class_state"  [ngClass]="{'no_available': empty==='not available', 'available':  empty==='available'}">{{empty}}</p>
 
+    </div> -->
+    <!-- bech nesta3ml ngFor lahne  -->
+    <div *ngFor="let room of classrooms; let i = index" class="class_div"
+    [ngClass]="{'no_empty': room.underCleaning || !room.empty, 'empty': !room.underCleaning && room.empty }">
+        <div class="class_num">
+            <h1>{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
+        </div>
+        <div class="info">
+            <p>Temperature :<span>{{room.temperature}}°C</span></p>
+            <p>Humidity :<span>{{room.humidity}}%</span></p>
+            <!-- have to change starting from here -->
+            <div  *ngIf="role === 'admin'; else notAdmin">
+                <p>
+                    A.C State :
+                    <input [checked] = "room.airConditionner"
+                     type="checkbox" id="AC_state" />
+                    <label (click) = "airConditionner(i, room.airConditionner)" for="AC_state">
+                        Toggle
+                    </label>
+                </p>
+    
+                <p>
+                    Fire System :
+                    <input [checked] = "room.fireSystem"
+                    type="checkbox" id="fire" />
+                    <label (click) = "fireSystem(i, room.fireSystem)" for="fire">
+                        Toggle
+                    </label>
+                </p>
+                <p>
+                    Anti_theft :
+                    <input [checked] = "room.antiTheft"
+                    type="checkbox" id="theft" />
+                    <label (click) = "antiTheft(i, room.antiTheft)" for="theft">
+                        Toggle
+                    </label>
+                </p>
+                <p>
+                    Linghting :
+                    <input [checked] = "room.lighting"
+                    type="checkbox" id="light" />
+                    <label (click) = "lighting(i, room.lighting)" for="light">
+                        Toggle
+                    </label>
+                </p>
+            </div>
+            <!-- rendered for non admins aka students -->
+            <ng-template #notAdmin>
+                <div>
+                    <!-- air conditionner -->
+                    <div class="student">
+                        <p>A.C State :</p>  
+                        <div *ngIf="room.airConditionner; else airConditionnerOff">
+                            <span>On</span>
+                        </div>
+                        <ng-template #airConditionnerOff>
+                            <span>Off</span>
+                        </ng-template>
+                    </div>
+
+                    <!-- fire system -->
+                    <div class="student">
+                        <p>Fire System :</p>  
+                        <div *ngIf="room.fireSystem; else fireSystemOff">
+                            <span>On</span>
+                        </div>
+                        <ng-template #fireSystemOff>
+                            <span>Off</span>
+                        </ng-template>
+                    </div>
+
+                    <!-- anti theft system -->
+                    <div class="student">
+                        <p>Anti_Theft :</p>  
+                        <div *ngIf="room.antiTheft; else antiTheftOff">
+                            <span>On</span>
+                        </div>
+                        <ng-template #antiTheftOff>
+                            <span>Off</span>
+                        </ng-template>
+                    </div>
+
+                    <!-- lighting -->
+                    <div class="student">
+                        <p>Lighting :</p>  
+                        <div *ngIf="room.lighting; else lightingOff">
+                            <span>On</span>
+                        </div>
+                        <ng-template #lightingOff>
+                            <span>Off</span>
+                        </ng-template>
+                    </div>
+
+                </div>
+            </ng-template>
+            <!-- controlled options end here -->
+            <div class="availableSpan">
+                <p>
+                    Availability:
+                </p> 
+                <span *ngIf="!room.underCleaning && room.empty; else notAvailable">
+                    available
+                </span>
+                <ng-template #notAvailable>
+                    <span>
+                        unavailable
+                    </span>
+                </ng-template>
+            </div>
+        </div>
     </div>
+    <!-- lahne nkammel ngFor -->
 </div>
 
 </div>
+
+
+ 

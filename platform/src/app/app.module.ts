@@ -21,7 +21,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 import 'firebase/storage';
 
 //angular material
@@ -34,6 +34,9 @@ import { CourseFilesComponent } from './main-structure/course-files/course-files
 import { FilesListComponent } from './main-structure/files-list/files-list.component';
 import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
+
+//something I don't know its name
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 
 @NgModule({
@@ -68,7 +71,8 @@ import { ClassControlComponent } from './main-structure/class-control/class-cont
     MatInputModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

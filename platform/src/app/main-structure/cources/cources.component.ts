@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Course } from 'src/app/model/course';
-import { FileUpload } from 'src/app/model/file-upload.model';
-import { CourseService } from 'src/app/services/course.service';
-import { UploadFileService } from 'src/app/services/upload-file.service';
+import { Course } from 'app/model/course';
+import { FileUpload } from 'app/model/file-upload.model';
+import { CourseService } from 'app/services/course.service';
+import { UploadFileService } from 'app/services/upload-file.service';
 
 @Component({
   selector: 'app-cources',

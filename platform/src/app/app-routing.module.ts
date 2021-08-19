@@ -31,7 +31,11 @@ const routes: Routes = [
     {path:"courses", component:CourcesComponent},
     {path:"forum", component:ForumComponent},
     {path:"admin", component:AdminPageComponent},
-    {path: "class_control", component: ClassControlComponent}
+    {path: "class_control", children: [
+      {path: ":role", component: ClassControlComponent},
+      {path: "", component: ClassControlComponent},
+      {path: "**", redirectTo: ""}
+    ]}
   ]},
   
   {path:"forum_details", component:ForumDetailsComponent},

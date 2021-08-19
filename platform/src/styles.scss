@@ -3,6 +3,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=El+Messiri&display=swap");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@syncfusion/ej2-base/styles/material.css";
+@import "~@syncfusion/ej2-buttons/styles/material.css";
 
 .light-theme {
   --default_text_color: #20558b;
