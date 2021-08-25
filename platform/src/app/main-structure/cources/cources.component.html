@@ -3,9 +3,6 @@
 
     <h1>Study at YOUR pace.<img class="header_avatar" src="../../../assets/images/courses_avatar 2.svg" alt=""></h1>
 
-
-
-
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <form class="form" [formGroup]="addCourse" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
@@ -57,9 +54,8 @@
                       {{ percentage }}%
                     </div>
                   </div>
-
+                  <app-files-list (FilesToAddWithCourse) = "FilesAttachedToCourse($event)"></app-files-list>
                 </div>
-
 
               </div>
             </div>
@@ -72,32 +68,40 @@
       </div>
     </div>
 
-
-
-
   </div>
+
 
   <div class="buttons">
     <div class="button_box">
-      <div class="btn btn-three">
-        <span>NEW</span>
+      <!-- the all courses' button -->
+      <div class="btn btn-three" 
+      [ngStyle]="allCourses == displayedSubject? 
+      {'background-color': '#3f51b5'} : {'color':  'black'}"
+      routerLink="/platform/courses"  
+      [queryParams] = "{ subject: allCourses }">
+        <span>All</span>
       </div>
-      <div class="btn btn-three">
-        <span>MATH</span>
-      </div>
-      <div class="btn btn-three">
-        <span>SVT</span>
+      <!-- the all courses' button -->
+      <!-- the specific subject buttons -->
+      <div  *ngFor="let option of subjects; let i = index"
+         class="btn btn-three"
+         [ngStyle]="option.toLowerCase() == displayedSubject? 
+          {'background-color': '#3f51b5'} : {'color':  'black'}"
+          (click)="changeStyling(option); selectSubject(option)" 
+          routerLink="['/platform/courses']"  
+          [queryParams] = "{ subject: option }" >
+          <span>{{option}}</span>
       </div>
     </div>
     <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
-
   </div>
+
   <div class="course_cont">
 
     <div class="course_div btn-three"
-      *ngFor="let item of courselist| paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
-      <h3>Subject</h3>
-      <h2 class="course_title">Course title</h2>
+      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
+      <h3>{{item.Subject}}</h3>
+      <h2 class="course_title">{{item.Title}}</h2>
       <h6>Mr foulen fouleni</h6>
       <div class="preview">
         <a href="#">Preview</a>

@@ -16,6 +16,9 @@ import { ForumDetailsComponent } from './forum-details/forum-details.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AsyncPipe } from '@angular/common';
+
+
 
 //firebase
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -23,6 +26,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'environments/environment';
 import 'firebase/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import 'firebase/messaging';
+import * as firebase from 'firebase/app';
 
 //angular material
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -34,9 +41,12 @@ import { CourseFilesComponent } from './main-structure/course-files/course-files
 import { FilesListComponent } from './main-structure/files-list/files-list.component';
 import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 //something I don't know its name
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { AlertsComponent } from './main-structure/alerts/alerts.component';
 
 
 @NgModule({
@@ -56,6 +66,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     FilesListComponent,
     FileDetailsComponent,
     ClassControlComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,9 +83,12 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     MatSelectModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    ButtonModule
+    ButtonModule,
+    AngularFireMessagingModule,
+    AngularFireAuthModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [AsyncPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

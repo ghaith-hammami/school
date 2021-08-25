@@ -11,35 +11,49 @@ import { AdminPageComponent } from './main-structure/admin-page/admin-page.compo
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
+import { AlertsComponent } from './main-structure/alerts/alerts.component';
 
 
 
 const routes: Routes = [
 
-  {path:"welcome" ,component:LandingPageComponent},
-  {path:"", redirectTo:'welcome',pathMatch:'full'},
+  { path: "welcome", component: LandingPageComponent },
+  { path: "", redirectTo: 'welcome', pathMatch: 'full' },
 
-  {path:"login", component:LoginComponent ,children:[
-    {path:"", redirectTo:'student_login',pathMatch:'full'},
-    {path:"admin_login" ,component:AdminLoginComponent},
-    {path:"student_login" ,component:StudentLoginComponent}
-  ]},
-  
-  {path:"platform", component:MainStructureComponent, children:[
-    {path:"", redirectTo:'home',pathMatch:'full'},
-    {path:"home", component:HomeComponent},
-    {path:"courses", component:CourcesComponent},
-    {path:"forum", component:ForumComponent},
-    {path:"admin", component:AdminPageComponent},
-    {path: "class_control", children: [
-      {path: ":role", component: ClassControlComponent},
-      {path: "", component: ClassControlComponent},
-      {path: "**", redirectTo: ""}
-    ]}
-  ]},
-  
-  {path:"forum_details", component:ForumDetailsComponent},
-  
+  {
+    path: "login", component: LoginComponent, children: [
+      { path: "", redirectTo: 'student_login', pathMatch: 'full' },
+      { path: "admin_login", component: AdminLoginComponent },
+      { path: "student_login", component: StudentLoginComponent }
+    ]
+  },
+
+  {
+    path: "platform", component: MainStructureComponent, children: [
+      { path: "alerts", component: AlertsComponent },
+      { path: "", redirectTo: 'home', pathMatch: 'full' },
+      { path: "home", component: HomeComponent },
+      {
+        path: "courses", children: [
+          { path: ":subject", component: CourcesComponent },
+          /*       {path: "all", component: CourcesComponent},
+                {path: "", redirectTo: "all", pathMatch: 'full'}, */
+        ]
+      },
+      { path: "forum", component: ForumComponent },
+      { path: "admin", component: AdminPageComponent },
+      {
+        path: "class_control", children: [
+          { path: ":role", component: ClassControlComponent },
+          { path: "", component: ClassControlComponent },
+          { path: "**", redirectTo: "", pathMatch: "full" }
+        ]
+      }
+    ]
+  },
+
+  { path: "forum_details", component: ForumDetailsComponent },
+
 
 
 ];

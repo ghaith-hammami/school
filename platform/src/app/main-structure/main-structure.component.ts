@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebsiteThemeService } from '../website-theme.service';
+import {RouterModule} from '@angular/router';
+
 
 @Component({
   selector: 'app-main-structure',

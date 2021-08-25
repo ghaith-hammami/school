@@ -1,7 +1,7 @@
 export class Classroom {
     "key": string;
-    "sector": number
-    "classroomNumber": number
+    "sector": number;
+    "classroomNumber": number;
     "airConditionner": boolean;
     "antiTheft": boolean;
     "fireSystem": boolean;
@@ -9,5 +9,8 @@ export class Classroom {
     "lighting": boolean;
     "temperature": number;
     "underCleaning": boolean;
-    "empty": boolean
+    "placesNumber": number;
+    "entrants": number;
+    "leavers": number;
+    "soundIntensity": boolean
 }
