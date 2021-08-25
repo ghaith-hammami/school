@@ -11,7 +11,6 @@ import { AdminPageComponent } from './main-structure/admin-page/admin-page.compo
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
-import { AlertsComponent } from './main-structure/alerts/alerts.component';
 
 
 
@@ -30,14 +29,13 @@ const routes: Routes = [
 
   {
     path: "platform", component: MainStructureComponent, children: [
-      { path: "alerts", component: AlertsComponent },
       { path: "", redirectTo: 'home', pathMatch: 'full' },
       { path: "home", component: HomeComponent },
       {
         path: "courses", children: [
           { path: ":subject", component: CourcesComponent },
-          /*       {path: "all", component: CourcesComponent},
-                {path: "", redirectTo: "all", pathMatch: 'full'}, */
+          { path: "all", component: CourcesComponent },
+          { path: "", redirectTo: "all", pathMatch: 'full' },
         ]
       },
       { path: "forum", component: ForumComponent },

@@ -23,6 +23,7 @@ export class RoomControlService {
   constructor(public db: AngularFireDatabase, private snackBar: MatSnackBar) {
     this.roomsRef = this.db.list(this.roomsPath);
     this.alertsRef = this.db.list(this.alertsPath);
+  
   }
 
   getRooms() {
@@ -38,6 +39,7 @@ export class RoomControlService {
       if (snapshot.val() === true) {
         this.alert.title = "Fire in " + snapshot.key;
         this.alert.body = "There have been a detection of fire in " + snapshot.key;
+        this.alert.date = Date.now()
         this.alertsRef.push(this.alert);
       }
 
@@ -55,4 +57,7 @@ export class RoomControlService {
 
   }
 
+  getListOfAlerts(): AngularFireList<Alert> {
+    return this.alertsRef;
+  }
 }

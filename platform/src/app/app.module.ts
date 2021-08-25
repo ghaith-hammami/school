@@ -46,7 +46,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //something I don't know its name
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
-import { AlertsComponent } from './main-structure/alerts/alerts.component';
 
 
 @NgModule({
@@ -66,7 +65,6 @@ import { AlertsComponent } from './main-structure/alerts/alerts.component';
     FilesListComponent,
     FileDetailsComponent,
     ClassControlComponent,
-    AlertsComponent,
   ],
   imports: [
     BrowserModule,

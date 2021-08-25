@@ -13,33 +13,30 @@ import { WebsiteThemeService } from './website-theme.service';
 export class AppComponent {
   title = 'platform';
   message: any
-  clickEventSubscription:Subscription
-  
-  
-  constructor(@Inject(DOCUMENT) private document:Document, private renderer:Renderer2 ,private theme_ser:WebsiteThemeService,
-  private roomSRV: RoomControlService) {
-    this.clickEventSubscription =this.theme_ser.getClickEvent().subscribe(()=>{
+  clickEventSubscription: Subscription
+
+
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2, private theme_ser: WebsiteThemeService,
+    private roomSRV: RoomControlService) {
+    this.clickEventSubscription = this.theme_ser.getClickEvent().subscribe(() => {
       this.switchTheme()
     })
-   }
-
-   
+  }
 
 
-  theme='light-theme'
 
-  InitializeTheme=() => this.renderer.addClass(this.document.body,this.theme)
+
+  theme = 'light-theme'
+
+  InitializeTheme = () => this.renderer.addClass(this.document.body, this.theme)
   ngOnInit(): void {
-    this.InitializeTheme();
-    //test
-    this.roomSRV.addAlert()
-    //testing again
-    this.roomSRV.newAlertMessage();
-    
 
+    this.InitializeTheme();
+    this.roomSRV.addAlert()
+    this.roomSRV.newAlertMessage();
 
   }
-  switchTheme(){
-    this.document.body.classList.replace(this.theme,this.theme ==='light-theme'? (this.theme ='dark-theme') : (this.theme='light-theme'))
+  switchTheme() {
+    this.document.body.classList.replace(this.theme, this.theme === 'light-theme' ? (this.theme = 'dark-theme') : (this.theme = 'light-theme'))
   }
 }
