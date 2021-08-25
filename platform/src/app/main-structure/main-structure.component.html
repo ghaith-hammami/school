@@ -4,11 +4,37 @@
   <div id='stars3'></div>
   <!--navbar div-->
   <div class="navigation">
+    <div class="burger_logo">
     <img src="../../assets/icons/menu.svg" class="burger" data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" alt="">
-    <h1>drop <span>of </span>change</h1>
+    <h1>drop <span>of </span> <br>change</h1>
+    </div>
+    <div class="help">
     <input id="toggle" class="toggle" type="checkbox" (click)='switchTheme()'>
+
+    <div *ngIf="true" class="dropdown">
+      <img class="notif_icon" src="../../assets/icons/notif.svg" alt="" data-bs-toggle="dropdown" aria-expanded="false">
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li *ngFor="let notif of notif_list">
+          <img *ngIf="alert.type =='fire'" src="../../assets/icons/fire_alert.svg" alt="">
+          <img *ngIf="alert.type =='theft'" src="../../assets/icons/theft_alert.svg" alt="">
+          <div class="info">
+            <span>Fire</span> alert in class <span>22</span> sector <span>2</span>
+            <p>on 22/02/2002 ° False alarm</p> 
+        </div>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+
+
+    </div>
+
+
   </div>
+
+
+
 
   <div class="mask">
     <div class="outlet">
@@ -74,6 +100,39 @@
           <a style="color: red;" href="#">log out</a>
         </div>
       </div>
+
+
+
+
+      <div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  ">
+          <div class="modal-content"[ngClass]="{fire:alert.type =='fire' ,theft:alert.type =='theft'}">
+            <div class="modal-body">
+              <div class="icon_alert">
+                <img *ngIf="alert.type =='fire'" src="../../assets/icons/fire_alert.svg" alt="">
+                <img *ngIf="alert.type =='theft'" src="../../assets/icons/theft_alert.svg" alt="">
+                <h1>Alert</h1>
+              </div>
+              <div class="alert_info">
+                <p>There is a detection of <span>{{alert.type}}</span></p>
+                <p>room : <span>{{alert.room}}</span></p>
+                <p>sector : <span>{{alert.sector}}</span></p> 
+              </div>
+              <p>Fire Departement :198 </p>
+              <p>Police :197 </p>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fake Alarm</button>
+              <button type="button" class="btn btn-danger">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      
       <router-outlet></router-outlet>
     </div>
   </div>

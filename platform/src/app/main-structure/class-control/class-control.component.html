@@ -23,7 +23,6 @@
             <p *ngIf="true">Fire System :<input type="checkbox" id="fire" /><label for="fire">Toggle</label></p>
             <p *ngIf="true">Anti_theft :<input type="checkbox" id="theft" /><label for="theft">Toggle</label></p>
             <p *ngIf="true">Linghting :<input type="checkbox" id="light" /><label for="light">Toggle</label></p>
-            
         </div>
         <p class="class_state available_tag"  [ngClass]="{'no_available': empty==='not available', 'available':  empty==='available'}">{{empty}}</p>
 

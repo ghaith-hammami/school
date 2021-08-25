@@ -1,7 +1,8 @@
 .home_page{
-      background: linear-gradient(180deg, #0B194E 0%, #000000 100%);
+      background: var(--background_color);
       padding:0 10vw;
       padding-top: 15vh;
+      height: 100vh;
 }
 .news_section{
       width: 100%;

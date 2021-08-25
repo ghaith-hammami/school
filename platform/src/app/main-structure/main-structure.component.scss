@@ -70,15 +70,19 @@
 }
 
 .navigation {
+    .burger_logo{
+        display: flex;
+    }
+
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         font-weight: 700;
         font-family: "El Messiri", sans-serif;
         z-index: 3;
         color: var(--secondary_color);
         margin-top: 1rem;
         span {
-            font-size: 1.19rem;
+            font-size: 1rem;
             font-family: "El Messiri", sans-serif;
             z-index: 3;
         }
@@ -90,7 +94,7 @@
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between ;
     z-index: 19;
     top: 0rem;
     left: 0rem;
@@ -109,6 +113,7 @@
     height: auto;
     z-index: 3;
     fill: #4f00f8;
+    margin-right: 1rem;
 }
 
 .profile_cont {
@@ -120,11 +125,15 @@
         font-style: italic;
     }
 }
+.help{
+    display: flex;
+    align-items: center;
+}
 
 //mode switch
 .toggle {
-    --size: 2rem;
-
+    --size: 1.5rem;
+margin-right: 1rem;
     appearance: none;
     outline: none;
     cursor: pointer;
@@ -162,3 +171,101 @@
         background-color: white;
     }
 }
+
+
+
+.fire{
+    border-top: 5px solid rgb(255, 34, 34);
+    span{
+        color: rgb(255, 34, 34);
+    }
+}
+.theft{
+    border-top: 5px solid rgb(32, 32, 32);
+    span{
+        color: rgb(32, 32, 32);
+    }
+}
+.modal-content{
+    background-color: white;
+}
+.modal-body{
+    .icon_alert{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 3rem;
+    }
+    flex-wrap: wrap;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    span{
+        font-size: 1.5rem;
+        font-weight: bold;
+
+    }
+    h1{
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #11205f;
+    }
+    p{
+        color: #0e1638;
+        margin: 0;
+        font-weight: 600;
+        //align-self: flex-start;
+    }
+    img{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width: 50px;
+        height: auto;
+    }
+}
+.modal-footer{
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+
+//notif
+.notif_icon{
+    width: 25px;
+}
+.dropdown-menu{
+    width: 25rem;
+    padding: 0;
+    height: 50vh;
+    overflow-y: scroll;
+    background: var(--background_color);
+    span{
+        font-weight: bold;
+    }
+    li{
+        img{
+            width: 30px;
+            height: auto;
+        }
+        p{
+            font-size: 0.8rem;
+            color: gray;
+            margin-bottom: 0;
+        }
+        color: var(--secondary_color);
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0.8rem 0.5rem;
+        border-bottom: 1px solid grey;
+        &:hover{
+            background-color: rgba(147, 147, 255, 0.644);
+        }
+    }
+}
+

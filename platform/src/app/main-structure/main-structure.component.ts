@@ -10,6 +10,13 @@ export class MainStructureComponent implements OnInit {
 
   constructor(private theme_ser: WebsiteThemeService) { }
 
+  alert ={
+    type :"fire",
+    room : "22" ,
+    sector : "2",
+  }
+
+
   theme = ''
 
   ngOnInit(): void {
@@ -18,5 +25,6 @@ export class MainStructureComponent implements OnInit {
   switchTheme() {
     this.theme_ser.sendClickEvent()
   }
+  notif_list=[1,1,,1,1,1,1,1,1,1,1,1,1,1,1]
 
 }
