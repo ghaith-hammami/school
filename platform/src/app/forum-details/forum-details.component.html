@@ -1,31 +1,17 @@
-<div class="forum_post_page">
+<div *ngIf="certainPost" class="forum_post_page">
   <div class="page_head">
-    <h1>post title</h1>
+    <h1>{{certainPost.PostHeadline}}</h1>
     <p class="side_details">
-      by foulen fouleny 20/20/20
+      by foulen fouleny {{certainPost.dateNow | date: 'mediumDate'}}
     </p>
   </div>
 
   <main>
     <div class="post_cont">
       <div class="post_content">
-        <h2>post title</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque
-          mi. Tincidunt magnis odio dolor scelerisque at id tellus mauris lacus. Orci, in sed nisl, senectus tincidunt
-          blandit. Arcu, varius purus volutpat, mauris posuere purus accumsan condimentum nunc. Mi ut molestie enim ut
-          fusce ultrices maecenas enim. Facilisi vulputate eu at nibh imperdiet.Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Ornare condimentum mattis nibh semper scelerisque mi. Tincidunt magnis odio dolor scelerisque
-          at id tellus mauris lacus. Orci, in sed nisl, senectus tincidunt blandit. Arcu, varius purus volutpat, mauris
-          posuere purus accumsan condimentum nunc. Mi ut molestie enim ut fusce ultrices maecenas enim. Facilisi
-          vulputate eu at nibh imperdiet.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare condimentum
-          mattis nibh semper scelerisque mi. Tincidunt magnis odio dolor scelerisque at id tellus mauris lacus. Orci, in
-          sed nisl, senectus tincidunt blandit. Arcu, varius purus volutpat, mauris posuere purus accumsan condimentum
-          nunc. Mi ut molestie enim ut fusce ultrices maecenas enim. Facilisi vulputate eu at nibh imperdiet.Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque mi. Tincidunt
-          magnis odio dolor scelerisque at id tellus mauris lacus. Orci, in sed nisl, senectus tincidunt blandit. Arcu,
-          varius purus volutpat, mauris posuere purus accumsan condimentum nunc. Mi ut molestie enim ut fusce ultrices
-          maecenas enim. Facilisi vulputate eu at nibh imperdiet.</p>
-        <button class="btn btn-three" (click)="toogleTag()">comment</button>
+        <p>{{certainPost.PostText}}</p>
+        <!--         <button class="btn btn-three" (click)="toogleTag()">comment</button>
+ -->
       </div>
       <div class="like">
         <svg width="32" height="70" viewBox="0 0 32 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,15 +28,6 @@
     </div>
 
     <div class="comment_section">
-      <div *ngIf="showMe" class="add_comment">
-        <!--fom here ena najjamtech-->
-        <div class="contentt">
-          <h4>your name <h6 class="side_details">22/2022</h6>
-          </h4>
-          <textarea placeholder="type here..."></textarea>
-        </div>
-      </div>
-
       <div class="comment">
         <div class="profile">
           <div class="picture"></div>
@@ -68,19 +45,39 @@
           </div>
         </div>
         <div class="content">
-          <h4>your name <h6 class="side_details">22/2022</h6>
+          <!-- <h4>your name <h6 class="side_details">22/2022</h6>
           </h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque
             mi. Tincidunt magnis odio dolor scelerisque at id tellus mauris lacus. Orci, in sed nisl, senectus tincidunt
             blandit. Arcu, varius purus volutpat, mauris posuere purus accumsan condimentum nunc. Mi ut molestie enim ut
             fusce ultrices maecenas enim. Facilisi vulputate eu at nibh imperdiet.Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque mi. Tincidunt magnis odio
-            dolor scelerisque at id tellus mauris lac</p>
+            dolor scelerisque at id tellus mauris lac
+          </p> -->
+          <app-comments [comments]='comments'></app-comments>
         </div>
-
-
       </div>
 
+      <div class="add_comment">
+        <!--fom here ena najjamtech-->
+        <div class="contentt">
+          <form [formGroup]="AddComment" #formDirective="ngForm" (ngSubmit)="onCommentSubmit(formDirective)">
+            <mat-form-field appearance="outline" [color]='controlColor'>
+              <mat-label>Your Comment</mat-label>
+              <textarea matInput formControlName="commentContent"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline" [color]='controlColor'>
+              <mat-label>Your name</mat-label>
+              <input matInput formControlName="commentAuthor">
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="primary" class="commentButton"
+              [disabled]='AddComment.invalid'>Comment</button>
+          </form>
+          <!-- <h4>your name <h6 class="side_details">22/2022</h6>
+          </h4>
+          <textarea placeholder="type here..."></textarea> -->
+        </div>
+      </div>
 
 
 

@@ -46,6 +46,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //something I don't know its name
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -65,6 +68,9 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
     FilesListComponent,
     FileDetailsComponent,
     ClassControlComponent,
+    DateAgoPipe,
+    SearchPipe,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

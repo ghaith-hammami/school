@@ -1,0 +1,20 @@
+.side_details {
+    font-size: 0.7rem;
+    color: var(--secondary_color);
+}
+
+.content {
+    padding: 0.5rem 0;
+    flex-basis: 90%;
+    text-align: justify;
+    h4 {
+        font-size: 1.3rem;
+    }
+    h6 {
+        display: inline;
+    }
+    p {
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+}

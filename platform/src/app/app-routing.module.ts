@@ -38,7 +38,10 @@ const routes: Routes = [
           { path: "", redirectTo: "all", pathMatch: 'full' },
         ]
       },
-      { path: "forum", component: ForumComponent },
+      { path: "forum", children: [
+        {path: ":key", component: ForumDetailsComponent},
+        {path: "", component: ForumComponent}
+      ] },
       { path: "admin", component: AdminPageComponent },
       {
         path: "class_control", children: [

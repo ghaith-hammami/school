@@ -1,0 +1,33 @@
+<div *ngIf="!noComments" class="content">
+    <div *ngFor="let comment of comments; let i = index" [ngSwitch]="(comment === selectedComment)">
+        <div *ngSwitchCase="false">
+            <h4 class="side_details">
+                {{comment.user}}
+            </h4>
+            <p>
+                {{comment.commentContent}}
+            </p>
+            <button mat-stroked-button color="primary"
+                (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
+                Edit
+            </button>
+            <button mat-stroked-button color="primary" (click)="deleteComment(comment.key)">
+                Delete
+            </button>
+        </div>
+        <div *ngSwitchCase="true" class="editForm">
+            <form [formGroup]="editComment" (ngSubmit)="saveEditedComment()">
+                <textarea matInput formControlName="editedCommentContent" name="commentContent"
+                    [(ngModel)]="selectedCommentValue">
+                    </textarea>
+                <button mat-flat-button color="primary" type="submit">Save</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf='noComments'>
+    <h2>Be the first to add a comment!</h2>
+</div>

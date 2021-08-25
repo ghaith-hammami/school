@@ -1,6 +1,7 @@
 <div class="all_page">
   <div class="bundle">
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -9,11 +10,11 @@
           </div>
           <div class="modal-body">
             <div class="form">
-            <label for="title">post title</label>
-        <input name="title" type="text" placeholder="title...">
-        <label for="post_text">post body</label>
-        <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
-      </div>
+              <label for="title">post title</label>
+              <input name="title" type="text" placeholder="title...">
+              <label for="post_text">post body</label>
+              <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
@@ -50,33 +51,35 @@
       </div>
       <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         New post
-      </button> 
+      </button>
 
-     
-      
-      
-    
-    
+
+
+
+
+
     </div>
 
-      
-        <div class="post_div " *ngFor="let item of postlist| paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
-          <div class="info">    
-            <h1 class="blog_title">Why 1+1=2</h1>
-            <div class="date">
-              22 may
-            </div>
-          </div>
-          <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Faucibus porta praesent sapien augue nulla nisi, eu porttitor.
-            Vitae nunc egestas pellentesque sed sagittis velit gravida non. 
-            Feugiat mauris imperdiet volutpat magna et tristique dictum tellus elit.
-              Augue a turpis ipsum euismod...  </p>
-          <a href="#" class="RM">Read More</a> 
+    <!-- list of posts -->
+    <div class="post_div "
+      *ngFor="let item of posts | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
+      <div class="info">
+        <h1 class="blog_title">
+          <a class="blog_title" (click)='getKey(item.key)' routerLink="'/', item.key" style="text-decoration:none">
+            {{item.PostHeadline}}
+          </a>
+        </h1>
+        <div class="date">
+          {{item.dateNow | dateAgo: time}}
+        </div>
       </div>
-      <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
-      <div class="footer">
-        <img class="avatar" src="../../../assets/images/avatar.svg" alt="">
-    </div>
-</div>
+      <p class="text">{{item.PostText | slice :0:200 }} ...</p>
+      <small class="text-muted">{{item.numberOFComments}} answers</small>
 
+      <!-- <a href="#" class="RM">Read More</a> -->
+    </div>
+    <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    <div class="footer">
+      <img class="avatar" src="../../../assets/images/avatar.svg" alt="">
+    </div>
+  </div>
