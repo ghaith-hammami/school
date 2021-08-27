@@ -109,14 +109,6 @@ export class ForumComponent implements OnInit {
   }
   /* there is an error that is being thrown, and that is because we get the query from the search 
   bar component, and query is used in the template */
-
-
-
-
   page: number = 1
-  postlist = [1, 2, 3, 4, 5, 6, 79, 8798, 897, 98, 78, 88, 8, 5, 5, , 5, 5, , 55, , 55, 5, 5, 5, 5, 5, 55, 5, 5, 5, 5]
-  list_length: any = this.postlist.length
-  //go_to_post_form(){
-  //this.router.navigate(['/forum_add_post'])
-  //}
+ 
 }

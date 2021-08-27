@@ -142,7 +142,5 @@ export class CourcesComponent implements OnInit {
 
 
   page = 1
-  courselist = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
-  list_length = this.courselist.length
 
 }

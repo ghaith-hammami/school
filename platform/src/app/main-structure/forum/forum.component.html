@@ -89,7 +89,7 @@
 
     <!-- list of posts -->
     <div class="post_div " (click)='getKey(item.key)' routerLink="'/', item.key" 
-      *ngFor="let item of posts  | search: query | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
+      *ngFor="let item of posts  | search: query | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:posts.length }">
       <div class="info">
         <h1 class="blog_title">
             {{item.PostHeadline}}

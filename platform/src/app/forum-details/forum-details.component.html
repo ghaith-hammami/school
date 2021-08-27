@@ -1,4 +1,4 @@
-<div *ngIf="certainPost" class="forum_post_page">
+<div *ngIf="certainPost" class="forum_post_page padding_page">
   <div class="page_head">
     <h1>{{certainPost.PostHeadline}}</h1>
     <p class="side_details">
@@ -63,20 +63,17 @@
         <!--fom here ena najjamtech-->
         <div class="contentt">
           <form [formGroup]="AddComment" #formDirective="ngForm" (ngSubmit)="onCommentSubmit(formDirective)">
-            <mat-form-field appearance="outline" [color]='controlColor'>
-              <mat-label>Add an answer</mat-label>
+            <mat-form-field style="width: 100%;" appearance="outline" [color]='controlColor'>
+              <mat-label style="color: var(--secondary_color);" >type here...</mat-label>
               <textarea matInput formControlName="commentContent"></textarea>
             </mat-form-field>
             <mat-form-field appearance="outline" [color]='controlColor'>
-              <mat-label>Your name</mat-label>
+              <mat-label style="color: var(--secondary_color);">Your name</mat-label>
               <input matInput formControlName="commentAuthor">
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" class="commentButton"
               [disabled]='AddComment.invalid'>Comment</button>
           </form>
-          <!-- <h4>your name <h6 class="side_details">22/2022</h6>
-          </h4>
-          <textarea placeholder="type here..."></textarea> -->
         </div>
       </div>
 

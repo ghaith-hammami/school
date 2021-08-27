@@ -29,7 +29,7 @@ export class ForumDetailsComponent implements OnInit {
   ) {
     this.AddComment = new FormGroup({
       "commentContent": new FormControl(null, [Validators.required]),
-      "commentAuthor": new FormControl(null, [Validators.required])
+      "commentAuthor": new FormControl(null)
     })
   }
 

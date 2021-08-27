@@ -5,7 +5,7 @@
         <div *ngFor="let room of classrooms; let i = index" class="class_div"
             [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">
             <div class="class_num">
-                <h1>{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
+                <h1 [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
             </div>
             <div class="info">
                 <p>Temperature :<span>{{room.temperature}}°C</span></p>
