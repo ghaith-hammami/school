@@ -3,24 +3,7 @@
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <!-- <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="form">
-              <label for="title">post title</label>
-              <input name="title" type="text" placeholder="title...">
-              <label for="post_text">post body</label>
-              <textarea name="post_text" id="post_text" placeholder="type here..."></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Create post</button>
-          </div>
-        </div> -->
+       
         <form [formGroup]="AddPost" #formDirective="ngForm" (ngSubmit)="onSubmit()">
 
           <div class="modal-content">
@@ -105,13 +88,11 @@
     </div>
 
     <!-- list of posts -->
-    <div class="post_div "
+    <div class="post_div " (click)='getKey(item.key)' routerLink="'/', item.key" 
       *ngFor="let item of posts  | search: query | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
       <div class="info">
         <h1 class="blog_title">
-          <a class="blog_title" (click)='getKey(item.key)' routerLink="'/', item.key" style="text-decoration:none">
             {{item.PostHeadline}}
-          </a>
         </h1>
         <div class="date">
           {{item.dateNow | dateAgo: time}}
