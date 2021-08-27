@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
     
   }
   go_to_login(){
-    this.router.navigate(['/login'])
+    this.router.navigate(['/platform'])
   }
   scroll(el:HTMLElement){
     el.scrollIntoView()

@@ -3,6 +3,8 @@ import { WebsiteThemeService } from '../website-theme.service';
 import {RouterModule} from '@angular/router';
 import { RoomControlService } from 'app/services/room-control.service';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'app/services/auth.service';
+import firebase from 'firebase/app'
 
 
 @Component({
@@ -13,7 +15,7 @@ import { map } from 'rxjs/operators';
 export class MainStructureComponent implements OnInit {
   notifications: any;
 
-  constructor(private theme_ser: WebsiteThemeService, private roomSRV: RoomControlService) { }
+  constructor(private theme_ser: WebsiteThemeService, private roomSRV: RoomControlService, public authservice:AuthService) { }
 
   alert ={
     type :"fire",
@@ -30,6 +32,7 @@ export class MainStructureComponent implements OnInit {
         console.log(res);
         this.notifications = res
       })
+      this.authservice.getAfmin(firebase.auth().currentUser?.uid) 
   }
 
   switchTheme() {

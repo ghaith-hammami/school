@@ -11,9 +11,11 @@ import { AdminPageComponent } from './main-structure/admin-page/admin-page.compo
 import { ForumDetailsComponent } from './forum-details/forum-details.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
-
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const routes: Routes = [
 
   { path: "welcome", component: LandingPageComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
   },
 
   {
-    path: "platform", component: MainStructureComponent, children: [
+    path: "platform",canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }, component: MainStructureComponent, children: [
       { path: "", redirectTo: 'home', pathMatch: 'full' },
       { path: "home", component: HomeComponent },
       {
@@ -42,7 +44,7 @@ const routes: Routes = [
         {path: ":key", component: ForumDetailsComponent},
         {path: "", component: ForumComponent}
       ] },
-      { path: "admin", component: AdminPageComponent },
+      { path: "admin",canActivate:[AuthGuard], component: AdminPageComponent },
       {
         path: "class_control", children: [
           { path: ":role", component: ClassControlComponent },
