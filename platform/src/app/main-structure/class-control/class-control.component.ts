@@ -19,30 +19,31 @@ export class ClassControlComponent implements OnInit {
 
   ngOnInit(): void {
     this.roomService.getRooms().snapshotChanges().pipe(map(changes =>
-      changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))).subscribe(res => {
+      changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))))
+      .subscribe(res => {
         this.classrooms = res
       })
 
     this.activeRoute.params.subscribe(res => {
-      this.role = res['role'];  
-    }) 
+      this.role = res['role'];
+    })
 
   }
 
   airConditionner(index: number, airConditionnerStatus: boolean) {
-    this.roomService.changeRoomProperty(this.classrooms[index].key, {"airConditionner": !airConditionnerStatus})
+    this.roomService.changeRoomProperty(this.classrooms[index].key, { "airConditionner": !airConditionnerStatus })
   }
 
   fireSystem(index: number, fireSystemStatus: boolean) {
-    this.roomService.changeRoomProperty(this.classrooms[index].key, {"fireSystem": !fireSystemStatus})
+    this.roomService.changeRoomProperty(this.classrooms[index].key, { "fireSystem": !fireSystemStatus })
   }
 
   antiTheft(index: number, antiTheftStatus: boolean) {
-    this.roomService.changeRoomProperty(this.classrooms[index].key, {"antiTheft": !antiTheftStatus})
+    this.roomService.changeRoomProperty(this.classrooms[index].key, { "antiTheft": !antiTheftStatus })
   }
 
   lighting(index: number, lightingStatus: boolean) {
-    this.roomService.changeRoomProperty(this.classrooms[index].key, {"lighting": !lightingStatus})
+    this.roomService.changeRoomProperty(this.classrooms[index].key, { "lighting": !lightingStatus })
   }
 
 

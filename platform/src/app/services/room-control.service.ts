@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Alert } from 'app/model/alert';
+import { map } from 'rxjs/operators';
 import { Classroom } from '../model/classroom';
 
 @Injectable({
@@ -15,6 +16,7 @@ export class RoomControlService {
 
   roomsPath = "/Rooms"
   firePath = "/FireSystemIsSafe"
+  noisePath = "/tooMuchNoise"
   alertsPath = "/Alerts"
 
   roomsRef: AngularFireList<Classroom>
@@ -23,7 +25,7 @@ export class RoomControlService {
   constructor(public db: AngularFireDatabase, private snackBar: MatSnackBar) {
     this.roomsRef = this.db.list(this.roomsPath);
     this.alertsRef = this.db.list(this.alertsPath);
-  
+
   }
 
   getRooms() {
@@ -34,13 +36,41 @@ export class RoomControlService {
     return this.roomsRef.update(key, value);
   }
 
-  addAlert() {
+  addFireAlert() {
     this.db.database.ref(this.firePath).on("child_changed", (snapshot) => {
       if (snapshot.val() === true) {
-        this.alert.title = "Fire in " + snapshot.key;
-        this.alert.body = "There have been a detection of fire in " + snapshot.key;
-        this.alert.date = Date.now()
-        this.alertsRef.push(this.alert);
+        this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
+          changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
+            if (rs) {
+              for (let i of rs) {
+                const realRoomNumber = i.val.classroomNumber
+                this.alert.title = "Fire in classroom number " + realRoomNumber;
+                this.alert.body = "There have been a detection of fire in classroom number " + realRoomNumber;
+                this.alert.date = Date.now()
+                this.alertsRef.push(this.alert);
+              }
+            }
+          })
+      }
+
+    })
+  }
+
+  addNoiseAlert() {
+    this.db.database.ref(this.noisePath).on("child_changed", (snapshot) => {
+      if (snapshot.val() === true) {
+        this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
+          changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
+            if (rs) {
+              for (let i of rs) {
+                const realRoomNumber = i.val.classroomNumber
+                this.alert.title = "Too much noise in classroom number " + realRoomNumber;
+                this.alert.body = "The intenisty of sound is too high in classroom number " + realRoomNumber;
+                this.alert.date = Date.now()
+                this.alertsRef.push(this.alert);
+              }
+            }
+          })
       }
 
     })
@@ -60,4 +90,9 @@ export class RoomControlService {
   getListOfAlerts(): AngularFireList<Alert> {
     return this.alertsRef;
   }
+
+  getRoomNumber(key: any) {
+    return this.db.list(this.roomsPath, ref => ref.orderByKey().equalTo(key));
+  }
+
 }

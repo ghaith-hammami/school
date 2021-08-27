@@ -2,7 +2,7 @@
   <div class="page_head">
     <h1>{{certainPost.PostHeadline}}</h1>
     <p class="side_details">
-      by foulen fouleny {{certainPost.dateNow | date: 'mediumDate'}}
+      By {{certainPost.Author}}, {{certainPost.dateNow | date: 'mediumDate'}}
     </p>
   </div>
 
@@ -28,7 +28,8 @@
     </div>
 
     <div class="comment_section">
-      <div class="comment">
+      <app-comments [comments]='comments'></app-comments>
+      <!-- <div class="comment">
         <div class="profile">
           <div class="picture"></div>
           <div class="like">
@@ -45,7 +46,7 @@
           </div>
         </div>
         <div class="content">
-          <!-- <h4>your name <h6 class="side_details">22/2022</h6>
+          <h4>your name <h6 class="side_details">22/2022</h6>
           </h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque
             mi. Tincidunt magnis odio dolor scelerisque at id tellus mauris lacus. Orci, in sed nisl, senectus tincidunt
@@ -53,17 +54,17 @@
             fusce ultrices maecenas enim. Facilisi vulputate eu at nibh imperdiet.Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Ornare condimentum mattis nibh semper scelerisque mi. Tincidunt magnis odio
             dolor scelerisque at id tellus mauris lac
-          </p> -->
+          </p> 
           <app-comments [comments]='comments'></app-comments>
         </div>
-      </div>
+      </div> -->
 
       <div class="add_comment">
         <!--fom here ena najjamtech-->
         <div class="contentt">
           <form [formGroup]="AddComment" #formDirective="ngForm" (ngSubmit)="onCommentSubmit(formDirective)">
             <mat-form-field appearance="outline" [color]='controlColor'>
-              <mat-label>Your Comment</mat-label>
+              <mat-label>Add an answer</mat-label>
               <textarea matInput formControlName="commentContent"></textarea>
             </mat-form-field>
             <mat-form-field appearance="outline" [color]='controlColor'>

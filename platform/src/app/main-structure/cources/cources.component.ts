@@ -17,7 +17,7 @@ export class CourcesComponent implements OnInit {
   addCourse!: FormGroup;
   submitted = true;
   add = false;
-  subjects = this.courseServices.subjects;
+  subjects: any;
   updatedFile: any;
 
   constructor(private courseServices: CourseService,
@@ -76,6 +76,11 @@ export class CourcesComponent implements OnInit {
             this.courses = res;
           })
       }
+    })
+
+    //get the list of subjects 
+    this.courseServices.getSubjectsList().valueChanges().subscribe(res => {
+      this.subjects = res;
     })
 
   }

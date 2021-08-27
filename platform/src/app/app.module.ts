@@ -42,6 +42,7 @@ import { FilesListComponent } from './main-structure/files-list/files-list.compo
 import { FileDetailsComponent } from './main-structure/file-details/file-details.component';
 import { ClassControlComponent } from './main-structure/class-control/class-control.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 //something I don't know its name
@@ -49,6 +50,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CommentsComponent } from './comments/comments.component';
+import { PostsListSearchBarComponent } from './main-structure/posts-list-search-bar/posts-list-search-bar.component';
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import { CommentsComponent } from './comments/comments.component';
     DateAgoPipe,
     SearchPipe,
     CommentsComponent,
+    PostsListSearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ import { CommentsComponent } from './comments/comments.component';
     ButtonModule,
     AngularFireMessagingModule,
     AngularFireAuthModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   providers: [AsyncPipe],
   bootstrap: [AppComponent]

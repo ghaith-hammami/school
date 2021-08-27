@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Course } from '../model/course';
 import { map } from "rxjs/operators"
+import { Subject } from 'app/model/subject';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class CourseService {
   path = "/courses"
   courseRef!: AngularFireList<Course>
   courses: any;
+  subjectsPath = "/subjects"
+  subjectsRef: AngularFireList<Subject>
   
 
   subjects = [
@@ -22,7 +25,8 @@ export class CourseService {
   ]
 
   constructor(public db: AngularFireDatabase) {
-    this.courseRef = this.db.list(this.path)
+    this.courseRef = this.db.list(this.path);
+    this.subjectsRef = this.db.list(this.subjectsPath);
   }
 
   //get the list of courses
@@ -48,6 +52,7 @@ export class CourseService {
     return this.courseRef.update(key, value);
   }
 
-  //download file with courses
-  
+  getSubjectsList(): AngularFireList<Subject> {
+    return this.subjectsRef
+  }  
 }

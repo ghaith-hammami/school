@@ -32,29 +32,26 @@
                   <mat-form-field appearance="outline">
                     <mat-label for="courseSubject">Subject</mat-label>
                     <mat-select id="courseSubject" formControlName="courseSubject">
-                      <mat-option *ngFor="let option of subjects; let i = index" [value]="option">{{option}}
+                      <mat-option *ngFor="let option of subjects; let i = index" [value]="option">
+                        {{option | titlecase}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
 
                   <label>
-                    <input type="file" 
-                    class="text-nowrap text-truncate" 
-                    (change)="selectFile($event)"/>
+                    <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
                   </label>
 
                   <button mat-raised-button color="accent" [disabled]="!selectedFiles" (click)="upload()">
                     Upload
                   </button>
                   <div *ngIf="currentFileUpload" class="progress mt-2">
-                    <div class="progress-bar progress-bar-info" 
-                    role="progressbar" attr.aria-valuenow="{{ percentage }}"
-                      aria-valuemin="0" aria-valuemax="100" 
-                      [ngStyle]="{ width: percentage + '%' }">
+                    <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+                      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
                       {{ percentage }}%
                     </div>
                   </div>
-                  <app-files-list (FilesToAddWithCourse) = "FilesAttachedToCourse($event)"></app-files-list>
+                  <app-files-list (FilesToAddWithCourse)="FilesAttachedToCourse($event)"></app-files-list>
                 </div>
 
               </div>
@@ -74,23 +71,17 @@
   <div class="buttons">
     <div class="button_box">
       <!-- the all courses' button -->
-      <div class="btn btn-three" 
-      [ngStyle]="allCourses == displayedSubject? 
-      {'background-color': '#3f51b5'} : {'color':  'black'}"
-      routerLink="/platform/courses"  
-      [queryParams] = "{ subject: allCourses }">
+      <div class="btn btn-three" [ngStyle]="allCourses == displayedSubject? 
+      {'background-color': '#3f51b5'} : {'color':  'black'}" routerLink="/platform/courses"
+        [queryParams]="{ subject: allCourses }">
         <span>All</span>
       </div>
       <!-- the all courses' button -->
       <!-- the specific subject buttons -->
-      <div  *ngFor="let option of subjects; let i = index"
-         class="btn btn-three"
-         [ngStyle]="option.toLowerCase() == displayedSubject? 
-          {'background-color': '#3f51b5'} : {'color':  'black'}"
-          (click)="changeStyling(option); selectSubject(option)" 
-          routerLink="['/platform/courses']"  
-          [queryParams] = "{ subject: option }" >
-          <span>{{option}}</span>
+      <div *ngFor="let option of subjects; let i = index" class="btn btn-three" [ngStyle]="option.toLowerCase() == displayedSubject? 
+          {'background-color': '#3f51b5'} : {'color':  'black'}" (click)="changeStyling(option); selectSubject(option)"
+        routerLink="['/platform/courses']" [queryParams]="{ subject: option }">
+        <span>{{option | titlecase}}</span>
       </div>
     </div>
     <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
@@ -100,12 +91,16 @@
 
     <div class="course_div btn-three"
       *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
-      <h3>{{item.Subject}}</h3>
-      <h2 class="course_title">{{item.Title}}</h2>
+      <h3>{{item.Subject | titlecase}}</h3>
+      <h2 class="course_title">{{item.Title | titlecase}}</h2>
       <h6>Mr foulen fouleni</h6>
-      <div class="preview">
+      <!-- <div class="preview">
         <a href="#">Preview</a>
         <img src=".././../../assets/icons/preview_arrow.svg" alt="">
+      </div> -->
+      <div *ngIf="item.files" class="files">
+        <strong>Attachments</strong>
+        <app-course-files [course]="item"></app-course-files>
       </div>
     </div>
     <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>

@@ -31,8 +31,11 @@ export class AppComponent {
   InitializeTheme = () => this.renderer.addClass(this.document.body, this.theme)
   ngOnInit(): void {
 
+    
     this.InitializeTheme();
-    this.roomSRV.addAlert()
+    //alerts 
+    this.roomSRV.addFireAlert();
+    this.roomSRV.addNoiseAlert()
     this.roomSRV.newAlertMessage();
 
   }

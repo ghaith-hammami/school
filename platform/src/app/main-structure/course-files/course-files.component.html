@@ -1,1 +1,6 @@
-<p>course-files works!</p>
+<div *ngFor = "let file of courseFiles; let i = index">
+    <a href="{{file.url}}" target="_blank" rel="noopener noreferrer" style="text-decoration: aqua;">
+        File {{i+1}}
+    </a>
+</div>
+

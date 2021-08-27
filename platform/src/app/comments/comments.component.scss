@@ -3,6 +3,27 @@
     color: var(--secondary_color);
 }
 
+.like {
+    &:hover {
+        svg path:last-child {
+            transform: translateY(-10px);
+            transition: 0.5s;
+        }
+    }
+    p {
+        margin-top: 0.7rem;
+    }
+    text-align: center;
+}
+
+.comment {
+    border-bottom: 1px solid rgba(121, 121, 121, 0.5);
+    padding: 0 5vw;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
 .content {
     padding: 0.5rem 0;
     flex-basis: 90%;
@@ -16,5 +37,17 @@
     p {
         margin-top: 1rem;
         font-size: 1rem;
+    }
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .picture {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        background-color: aqua;
+        margin-bottom: 3rem;
     }
 }
