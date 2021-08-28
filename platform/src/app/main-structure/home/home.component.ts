@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NewsService } from 'app/services/news.service';
+import { News } from 'app/model/News';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-home',
@@ -6,12 +10,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  AddNews:FormGroup;
+  news= new News();
+  submitted= false;
+  News: any;
 
-  constructor() { }
+  constructor(private  newsService:NewsService) { 
+    this.AddNews = new FormGroup({
+      "newsHeadline": new FormControl(null,[Validators.required]),
+      "newsText": new FormControl(null,[Validators.required]),
+      "newsDateOfPublishement": new FormControl(null,[Validators.required]),
+      })
+  }
 
   ngOnInit(): void {
+    this.getAllNews();
+
   }
-  //classes logic
+  getAllNews() {
+    this.newsService.getAllNews().snapshotChanges().pipe(map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))).subscribe(rs => {
+      console.log(rs);
+      this.News = rs;
+      return this.News;
+    })
+  }
   classes=[
     {sector:"1", id:"05"},
     {sector:"1", id:"08"},
@@ -22,11 +44,23 @@ export class HomeComponent implements OnInit {
    length = this.classes.length
 
    //news
-  news =[1,2,3,4,5,6,7,8,9]
   
   scroll(el:HTMLElement){
     console.log(el)
   }
+  
+  onSubmit(){
+    this.submitted=true;
+    this.news.newsHeadline = this.AddNews.value.newsHeadline;
+    this.news.newsText = this.AddNews.value.newsText;
+    this.newsService.CreatNews(this.news)
+  }
+  newNews(){
+    this.submitted=false;
+    this.AddNews.reset();
+  }
+  //classes logic
+  
 
 
 }

@@ -1,5 +1,5 @@
 <div class="home_page">
- 
+
   <!--add news form-->
   <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     add news
@@ -10,69 +10,87 @@
 
   <div class="news_section">
     <div class="big_new">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-      
-      <div class="carousel-inner">
-        <div  *ngFor="let big_new of news ; let big_index =index" active="big_new.active"  [ngClass]="{active: big_index==0}"  class="carousel-item" >
-          <img src="../../../assets/images/news1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>{{big_index}}</h3>
-            <p>Some representative placeholder content for the first slide.</p>
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+          <div *ngFor="let big_News of News ; let big_index =index" active="big_New.active"
+            [ngClass]="{active: big_index==0}" class="carousel-item">
+            <img src="../../../assets/images/news1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>{{big_News.newsHeadline}}</h3>
+              <p>{{big_News.newsText}}</p>
+            </div>
           </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
     </div>
 
 
 
 
     <div class="small_news_cont">
-      <div attr.id="{{i}}" data-bs-target="#carouselExampleCaptions" *ngFor="let small_new of news ; let i =index" attr.data-bs-slide-to={{i}}  class="small_new">
+      <div attr.id="{{i}}" data-bs-target="#carouselExampleCaptions" *ngFor='let small_News of News ; let i= index'
+        attr.data-bs-slide-to={{i}} class="small_New">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="../../../assets/images/news1.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>{{i}}</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h5>{{small_News.newsHeadline}}</h5>
+                <p>{{small_News.newsText}}</p>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
-</div>
 
 
 
 
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<div class="modal-dialog">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-body">
+          <form [formGroup]="AddNews" #formDirective="ngForm" (ngSubmit)="onSubmit()">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
 
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="newsHeadline">News Headline:</label>
+                  <input formControlName="newsHeadline"  type="text" id="newsHeadline" class="form-control">
+                </div>
+                <!--                 <label for="title">post title</label>
+            <input name="title" type="text" placeholder="title..."> -->
+                <!-- <label for="post_text">post body</label>
+            <textarea name="post_text" id="post_text" placeholder="type here..."></textarea> -->
+                <div class="form-group">
+                  <label for="newsText">News Text:</label>
+                  <input formControlName="newsText" type="text" id="newsText" class="form-control">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="submit" data-bs-dismiss="modal">Create post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-      
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-      <button class="btn btn-primary" type="submit">Create post</button>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
