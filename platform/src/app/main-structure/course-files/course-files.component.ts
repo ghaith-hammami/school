@@ -16,9 +16,7 @@ export class CourseFilesComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit(): void {
-  
-    console.log(this.course.key);
-        
+          
     this.uploadService.getCourseFiles(this.course.key).valueChanges().subscribe(res => {
       this.courseFiles = res;
     })

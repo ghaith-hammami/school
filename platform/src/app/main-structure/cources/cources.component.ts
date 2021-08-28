@@ -3,9 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'app/model/course';
 import { FileUpload } from 'app/model/file-upload.model';
+import { AuthService } from 'app/services/auth.service';
 import { CourseService } from 'app/services/course.service';
 import { UploadFileService } from 'app/services/upload-file.service';
 import { map } from 'rxjs/operators';
+import firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-cources',
@@ -19,10 +22,11 @@ export class CourcesComponent implements OnInit {
   add = false;
   subjects: any;
   updatedFile: any;
+  length!: number
 
   constructor(private courseServices: CourseService,
     private uploadService: UploadFileService, private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute, public authSRV: AuthService) {
     this.addCourse = new FormGroup({
       "courseTitle": new FormControl(null, [Validators.required]),
       "courseSubject": new FormControl(null, [Validators.required])
@@ -59,6 +63,9 @@ export class CourcesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
+
     //display the courses' list logic
     this.activatedRoute.params.subscribe((params) => {
       console.log(params);
@@ -68,6 +75,7 @@ export class CourcesComponent implements OnInit {
         this.courseServices.getCourses().snapshotChanges().pipe(map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))))
           .subscribe(rs => {
             this.courses = rs;
+            if (this.courses) {this.length = this.courses.length}
           })
       } else {
         const query = this.db.list('courses', ref => ref.orderByChild('Subject').equalTo(subject))

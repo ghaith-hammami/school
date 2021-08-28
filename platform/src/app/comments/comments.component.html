@@ -2,7 +2,7 @@
     <div class="comment" *ngFor="let comment of comments; let i = index">
         <div class="profile">
             <div class="picture"></div>
-            <div class="like">
+            <!-- <div class="like">
                 <svg width="20" height="45" viewBox="0 0 32 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M32 36.2C32 34.1 30.3 33 28 33H21.3C21.8 31.2 22 29.5 22 28C22 22.2 20.4 21 19 21C18.1 21 17.4 21.1 16.5 21.6C16.2 21.8 16.1 22 16 22.3L15 27.7C13.9 30.5 11.2 33 9 34.7V49C9.8 49 10.6 49.4 11.6 49.9C12.7 50.4 13.8 51 15 51H24.5C26.5 51 28 49.4 28 48C28 47.7 28 47.5 27.9 47.3C29.1 46.8 30 45.8 30 44.5C30 43.9 29.9 43.4 29.7 42.9C30.5 42.4 31.2 41.5 31.2 40.5C31.2 39.9 30.9 39.3 30.6 38.8C31.4 38.2 32 37.2 32 36.2V36.2ZM29.9 36.2C29.9 37.5 28.6 37.6 28.4 38.2C28.2 38.9 29.2 39.1 29.2 40.3C29.2 41.5 27.7 41.5 27.5 42.2C27.3 43 28 43.2 28 44.4V44.6C27.8 45.6 26.3 45.7 26 46.1C25.7 46.6 26 46.8 26 47.9C26 48.5 25.3 48.9 24.5 48.9H15C14.2 48.9 13.4 48.5 12.4 48C11.6 47.6 10.8 47.2 10 47V36.5C12.5 34.6 15.7 31.8 16.9 28.3V28.1L17.8 23.1C18.2 23 18.5 23 19 23C19.2 23 20 24.2 20 28C20 29.5 19.7 31.1 19.2 33H19C18.4 33 18 33.4 18 34C18 34.6 18.4 35 19 35H28C29 35 29.9 35.5 29.9 36.2Z"
@@ -14,7 +14,7 @@
                         fill="#0085FF" />
                 </svg>
                 <p class="side_details">55</p>
-            </div>
+            </div> -->
         </div>
         <div class="content">
             <div [ngSwitch]="(comment === selectedComment)">
@@ -25,13 +25,15 @@
                     <p>
                         {{comment.commentContent}}
                     </p>
-                    <button mat-stroked-button color="primary"
-                        (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
-                        Edit
-                    </button>
-                    <button mat-stroked-button color="primary" (click)="deleteComment(comment.key)">
-                        Delete
-                    </button>
+                    <div *ngIf="comment.userUID === test">
+                        <button mat-stroked-button color="primary"
+                            (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
+                            Edit
+                        </button>
+                        <button mat-stroked-button color="primary" (click)="deleteComment(comment.key)">
+                            Delete
+                        </button>
+                    </div>
                 </div>
                 <div *ngSwitchCase="true" class="editForm">
                     <form [formGroup]="editComment" (ngSubmit)="saveEditedComment()">

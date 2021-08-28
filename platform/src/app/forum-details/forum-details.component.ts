@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PostServicesService } from 'app/services/post-services.service';
 import { map } from 'rxjs/operators';
 import { Comment } from "app/model/Comment"
+import { AuthService } from 'app/services/auth.service';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-forum-details',
@@ -25,7 +27,7 @@ export class ForumDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postServices: PostServicesService
+    private postServices: PostServicesService, private authServ: AuthService
   ) {
     this.AddComment = new FormGroup({
       "commentContent": new FormControl(null, [Validators.required]),
@@ -40,6 +42,7 @@ export class ForumDetailsComponent implements OnInit {
     this.comment.user = this.AddComment.value.commentAuthor
     this.comment.postKey = this.postKey;
     this.comment.commentedAt = new Date();
+    this.comment.userUID = firebase.auth().currentUser?.uid;
     const commentsNumber = (this.certainPost.numberOFComments) + 1
     this.postServices.AddComment(this.comment);
     this.postServices.PostRef.update(this.postKey, { numberOFComments: commentsNumber });
@@ -79,6 +82,8 @@ export class ForumDetailsComponent implements OnInit {
         console.log(this.comments);
         
       })
+
+      
     
 
   }

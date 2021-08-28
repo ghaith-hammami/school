@@ -3,5 +3,6 @@ export class Comment {
     commentContent!: string;
     user!: string;
     commentedAt!: any;
-    postKey!: string
+    postKey!: string;
+    userUID!: any;
 }

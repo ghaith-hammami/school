@@ -84,13 +84,17 @@
         <span>{{option | titlecase}}</span>
       </div>
     </div>
-    <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
+    <div *ngIf="authSRV.isAdmin">
+      <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        add course
+      </button>
+    </div>
   </div>
 
   <div class="course_cont">
 
     <div class="course_div btn-three"
-      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:courses.length }">
+      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems: length }">
       <h3>{{item.Subject | titlecase}}</h3>
       <h2 class="course_title">{{item.Title | titlecase}}</h2>
       <h6>Mr foulen fouleni</h6>

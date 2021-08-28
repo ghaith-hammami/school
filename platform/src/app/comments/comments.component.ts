@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Event } from '@angular/router';
 import { PostServicesService } from 'app/services/post-services.service';
+import firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-comments',
@@ -23,6 +25,8 @@ export class CommentsComponent implements OnInit {
   selectedComment: null;
   selectedCommentValue: string = "";
   newComment: any
+  test: any
+
 
 
   //edit selected Comment
@@ -45,6 +49,10 @@ export class CommentsComponent implements OnInit {
         }
       })
     })
+
+    this.test = firebase.auth().currentUser?.uid
+
+
   }
 
   //delete the comment

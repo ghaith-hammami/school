@@ -11,7 +11,7 @@
     <div class="help">
       <input id="toggle" class="toggle" type="checkbox" (click)='switchTheme()'>
 
-      <div *ngIf="true" class="dropdown">
+      <div *ngIf="authservice.isAdmin" class="dropdown">
         <img class="notif_icon" src="../../assets/icons/notif.svg" alt="" data-bs-toggle="dropdown"
           aria-expanded="false">
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -90,7 +90,7 @@
               <path d="M11 4C13.507 4.423 15.577 6.493 16 9H20C19.529 4.283 15.717 0.471 11 0V4Z" fill="white"/>
               <path d="M16 11C15.522 13.833 13.018 15.949 10.051 15.949C6.74203 15.949 4.05103 13.258 4.05103 9.949C4.05103 6.982 6.16702 4.478 9.00002 4V0C3.95402 0.504 0.0510254 4.773 0.0510254 9.949C0.0510254 15.463 4.53703 19.949 10.051 19.949C15.227 19.949 19.496 16.046 20 11H16V11Z" fill="white"/>
               </svg>
-            <h6 class="nav-item">Class Control</h6>
+            <h6 class="nav-item">Classrooms</h6>
           </div>
           <div class="flex" data-bs-dismiss="offcanvas" aria-label="Close" (click)='authservice.signOUT()' routerLinkActive="active">
             <svg class="nav_img" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'app/services/auth.service';
+import firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authSRV: AuthService) { }
 
   ngOnInit(): void {
+    this.authSRV.getAfmin(firebase.auth().currentUser?.uid) 
   }
   //classes logic
   classes=[

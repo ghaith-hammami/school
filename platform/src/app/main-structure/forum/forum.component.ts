@@ -20,7 +20,7 @@ export class ForumComponent implements OnInit {
   myControl = new FormControl();
   filteredOptions!: Observable<string[]>;
   //get the list of posts from the service
-  posts: any
+  posts!: Array<any>
 
   //get the list of topics from the service
   topics = this.postService.topics;
@@ -31,6 +31,7 @@ export class ForumComponent implements OnInit {
   submitted = false;
   date = new Date();
   pipe = new DatePipe('en-US')
+  length!: number 
 
   constructor(private postService: PostServicesService,
     activatedRoute: ActivatedRoute, private router: Router) {
@@ -61,6 +62,7 @@ export class ForumComponent implements OnInit {
     this.postService.getOrderedPosts().snapshotChanges().pipe(map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} })))).subscribe(res => {
         this.posts = res
+        if (this.posts) {this.length = this.posts.length}
       })
 
 
