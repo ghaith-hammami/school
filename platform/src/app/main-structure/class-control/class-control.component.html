@@ -1,17 +1,17 @@
 <div class="control_page padding_page">
-    <h1 class="title">Classrooms Control Center :</h1>
+    <h1 class="title">Information about the classrooms: </h1>
     <div class="class_cont">
         <!-- bech nesta3ml ngFor lahne  -->
         <div *ngFor="let room of classrooms; let i = index" class="class_div"
             [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">
             <div class="class_num">
-                <h1>{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
+                <h1 [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
             </div>
             <div class="info">
                 <p>Temperature :<span>{{room.temperature}}°C</span></p>
                 <p>Humidity :<span>{{room.humidity}}%</span></p>
                 <!-- have to change starting from here -->
-                <div *ngIf="role === 'admin'; else notAdmin">
+                <div *ngIf="authSRV.isAdmin; else notAdmin">
                     <p>
                         A.C State :
                         <input [checked]="room.airConditionner" type="checkbox" id="AC_state" />

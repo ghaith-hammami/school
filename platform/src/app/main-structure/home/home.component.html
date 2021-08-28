@@ -1,9 +1,11 @@
 <div class="home_page">
 
   <!--add news form-->
-  <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    add news
-  </button>
+  <div *ngIf="authSRV.isAdmin">
+    <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Add News
+    </button>
+  </div>
 
 
 

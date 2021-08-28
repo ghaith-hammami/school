@@ -3,6 +3,9 @@ import { map } from 'rxjs/operators';
 import { RoomControlService } from 'app/services/room-control.service';
 import { CheckBox } from '@syncfusion/ej2-angular-buttons';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'app/services/auth.service';
+import firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-class-control',
@@ -12,21 +15,22 @@ import { ActivatedRoute } from '@angular/router';
 export class ClassControlComponent implements OnInit {
 
   classrooms: any
-  role: string = ""
 
-  constructor(private roomService: RoomControlService, private activeRoute: ActivatedRoute) { }
+  constructor(private roomService: RoomControlService, private activeRoute: ActivatedRoute,
+    public authSRV: AuthService) { }
   empty = 'not available'
 
   ngOnInit(): void {
+
+    //
+    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
+    //
     this.roomService.getRooms().snapshotChanges().pipe(map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))))
       .subscribe(res => {
         this.classrooms = res
       })
 
-    this.activeRoute.params.subscribe(res => {
-      this.role = res['role'];
-    })
 
   }
 

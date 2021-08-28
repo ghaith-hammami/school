@@ -84,22 +84,22 @@
         <span>{{option | titlecase}}</span>
       </div>
     </div>
-    <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">add course</button>
+    <div *ngIf="authSRV.isAdmin">
+      <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        add course
+      </button>
+    </div>
   </div>
 
   <div class="course_cont">
 
     <div class="course_div btn-three"
-      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems:list_length }">
+      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems: length }">
       <h3>{{item.Subject | titlecase}}</h3>
       <h2 class="course_title">{{item.Title | titlecase}}</h2>
       <h6>Mr foulen fouleni</h6>
-      <!-- <div class="preview">
-        <a href="#">Preview</a>
-        <img src=".././../../assets/icons/preview_arrow.svg" alt="">
-      </div> -->
       <div *ngIf="item.files" class="files">
-        <strong>Attachments</strong>
+        <strong style="color: var(--secondary_color);">Attachments</strong>
         <app-course-files [course]="item"></app-course-files>
       </div>
     </div>

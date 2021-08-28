@@ -32,6 +32,8 @@ export class MainStructureComponent implements OnInit {
         console.log(res);
         this.notifications = res
       })
+
+      
       this.authservice.getAfmin(firebase.auth().currentUser?.uid) 
   }
 

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewsService } from 'app/services/news.service';
 import { News } from 'app/model/News';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
+import { AuthService } from 'app/services/auth.service';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,7 @@ export class HomeComponent implements OnInit {
   submitted= false;
   News: any;
 
-  constructor(private  newsService:NewsService) { 
+  constructor(private  newsService:NewsService, public authSRV: AuthService) { 
     this.AddNews = new FormGroup({
       "newsHeadline": new FormControl(null,[Validators.required]),
       "newsText": new FormControl(null,[Validators.required]),
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNews();
+    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
 
   }
   getAllNews() {

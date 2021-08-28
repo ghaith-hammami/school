@@ -125,7 +125,9 @@ body {
 
 //filter_btn
 .btn-three {
-  color: var(--secondary_color);
+  span{
+    color: var(--secondary_color);
+  }
   transition: all 0.5s;
   position: relative;
   margin-right: 0.2rem;
@@ -138,8 +140,6 @@ body {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: var(--);
-
   transition: all 0.3s;
 }
 .btn-three:hover::before {

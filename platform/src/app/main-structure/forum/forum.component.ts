@@ -20,7 +20,7 @@ export class ForumComponent implements OnInit {
   myControl = new FormControl();
   filteredOptions!: Observable<string[]>;
   //get the list of posts from the service
-  posts: any
+  posts!: Array<any>
 
   //get the list of topics from the service
   topics = this.postService.topics;
@@ -31,6 +31,7 @@ export class ForumComponent implements OnInit {
   submitted = false;
   date = new Date();
   pipe = new DatePipe('en-US')
+  length!: number 
 
   constructor(private postService: PostServicesService,
     activatedRoute: ActivatedRoute, private router: Router) {
@@ -61,6 +62,7 @@ export class ForumComponent implements OnInit {
     this.postService.getOrderedPosts().snapshotChanges().pipe(map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} })))).subscribe(res => {
         this.posts = res
+        if (this.posts) {this.length = this.posts.length}
       })
 
 
@@ -109,14 +111,6 @@ export class ForumComponent implements OnInit {
   }
   /* there is an error that is being thrown, and that is because we get the query from the search 
   bar component, and query is used in the template */
-
-
-
-
   page: number = 1
-  postlist = [1, 2, 3, 4, 5, 6, 79, 8798, 897, 98, 78, 88, 8, 5, 5, , 5, 5, , 55, , 55, 5, 5, 5, 5, 5, 55, 5, 5, 5, 5]
-  list_length: any = this.postlist.length
-  //go_to_post_form(){
-  //this.router.navigate(['/forum_add_post'])
-  //}
+ 
 }
