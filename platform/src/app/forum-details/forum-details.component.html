@@ -67,10 +67,10 @@
               <mat-label style="color: var(--secondary_color);" >type here...</mat-label>
               <textarea matInput formControlName="commentContent"></textarea>
             </mat-form-field>
-            <mat-form-field appearance="outline" [color]='controlColor'>
+            <!-- <mat-form-field appearance="outline" [color]='controlColor'>
               <mat-label style="color: var(--secondary_color);">Your name</mat-label>
               <input matInput formControlName="commentAuthor">
-            </mat-form-field>
+            </mat-form-field> -->
             <button mat-raised-button type="submit" color="primary" class="commentButton"
               [disabled]='AddComment.invalid'>Comment</button>
           </form>

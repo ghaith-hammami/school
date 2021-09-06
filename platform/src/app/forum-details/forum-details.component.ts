@@ -31,7 +31,6 @@ export class ForumDetailsComponent implements OnInit {
   ) {
     this.AddComment = new FormGroup({
       "commentContent": new FormControl(null, [Validators.required]),
-      "commentAuthor": new FormControl(null)
     })
   }
 
@@ -39,10 +38,12 @@ export class ForumDetailsComponent implements OnInit {
   //onCommentSubmit: when submitting the comment
   onCommentSubmit(formDirective: any) {
     this.comment.commentContent = this.AddComment.value.commentContent
-    this.comment.user = this.AddComment.value.commentAuthor
+    this.comment.user = this.authServ.name;
+    this.comment.profilePic = this.authServ.profilePic;
     this.comment.postKey = this.postKey;
     this.comment.commentedAt = new Date();
     this.comment.userUID = firebase.auth().currentUser?.uid;
+    this.comment.negativeTime = - Date.now();
     const commentsNumber = (this.certainPost.numberOFComments) + 1
     this.postServices.AddComment(this.comment);
     this.postServices.PostRef.update(this.postKey, { numberOFComments: commentsNumber });
@@ -53,9 +54,9 @@ export class ForumDetailsComponent implements OnInit {
 
   //set the color of the form
   get controlColor() {
-    return this.AddComment.invalid ? 'primary': 'primary';
+    return this.AddComment.invalid ? 'primary' : 'primary';
   }
-  
+
 
 
 
@@ -76,25 +77,26 @@ export class ForumDetailsComponent implements OnInit {
     this.commentsPath = this.postServices.commentsPath;
     const certainPostComments = this.db.list(this.commentsPath, ref =>
       ref.orderByChild('postKey').equalTo(this.postKey))
-    certainPostComments.snapshotChanges().pipe(map(changes => 
-      changes.map(c => ({key: c.payload.key, ... c.payload.val() as {}})))).subscribe(rs => {
+    certainPostComments.snapshotChanges().pipe(map(changes =>
+      changes.map(c => ({ key: c.payload.key, ...c.payload.val() as {} })))).subscribe(rs => {
         this.comments = rs;
         console.log(this.comments);
-        
+
       })
 
-      
-    
+
+    this.authServ.getName();
+
 
   }
 
 
-  showMe:boolean=false
- 
-  toogleTag(){
-    this.showMe=!this.showMe
+  showMe: boolean = false
+
+  toogleTag() {
+    this.showMe = !this.showMe
   }
-  sethide(element:any, text:any){
+  sethide(element: any, text: any) {
     element.textContent = text;
     element.disabled = true;
     element.disabled = false;

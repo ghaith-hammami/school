@@ -1,7 +1,9 @@
 <div *ngIf="!noComments">
     <div class="comment" *ngFor="let comment of comments; let i = index">
         <div class="profile">
-            <div class="picture"></div>
+            <div>
+                <img class="picture" src= {{comment.profilePic}}>
+            </div>
             <!-- <div class="like">
                 <svg width="20" height="45" viewBox="0 0 32 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

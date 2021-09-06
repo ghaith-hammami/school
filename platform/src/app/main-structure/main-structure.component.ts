@@ -29,12 +29,13 @@ export class MainStructureComponent implements OnInit {
   ngOnInit(): void {
     this.roomSRV.getListOfAlerts().snapshotChanges().pipe(map(changes => changes.map(c => 
       ({ key: c.payload.key,... c.payload.val()}) ))).subscribe(res => {
-        console.log(res);
         this.notifications = res
       })
 
       
-      this.authservice.getAfmin(firebase.auth().currentUser?.uid) 
+      this.authservice.getAfmin(firebase.auth().currentUser?.uid);
+      this.authservice.getName(); 
+      
   }
 
   switchTheme() {

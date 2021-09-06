@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Event } from '@angular/router';
+import { AuthService } from 'app/services/auth.service';
 import { PostServicesService } from 'app/services/post-services.service';
 import firebase from 'firebase/app'
 
@@ -30,7 +31,8 @@ export class CommentsComponent implements OnInit {
 
 
   //edit selected Comment
-  constructor(private postService: PostServicesService, private activatedRoute: ActivatedRoute) {
+  constructor(private postService: PostServicesService, private activatedRoute: ActivatedRoute, 
+    public authSRV: AuthService) {
     this.editComment = new FormGroup({
       editedCommentContent: new FormControl(null, [Validators.required])
     })

@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
   }
   getAllNews() {
     this.newsService.getAllNews().snapshotChanges().pipe(map(changes => changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))).subscribe(rs => {
-      console.log(rs);
       this.News = rs;
       return this.News;
     })
