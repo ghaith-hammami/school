@@ -35,7 +35,7 @@
                             </button>
                         </div>
                         <div *ngIf="comment.userUID === currentUserID || authSRV.isAdmin">
-                            <button *ngIf="authSRV.isAdmin" mat-stroked-button color="primary"
+                            <button mat-stroked-button color="primary"
                                 (click)="deleteComment(comment.key)">
                                 Delete
                             </button>
