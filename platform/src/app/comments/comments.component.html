@@ -2,7 +2,7 @@
     <div class="comment" *ngFor="let comment of comments; let i = index">
         <div class="profile">
             <div>
-                <img class="picture" src= {{comment.profilePic}}>
+                <img class="picture" src={{comment.profilePic}}>
             </div>
             <!-- <div class="like">
                 <svg width="20" height="45" viewBox="0 0 32 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,14 +27,19 @@
                     <p>
                         {{comment.commentContent}}
                     </p>
-                    <div *ngIf="comment.userUID === test">
-                        <button mat-stroked-button color="primary"
-                            (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
-                            Edit
-                        </button>
-                        <button mat-stroked-button color="primary" (click)="deleteComment(comment.key)">
-                            Delete
-                        </button>
+                    <div class="commentActions">
+                        <div *ngIf="comment.userUID === currentUserID">
+                            <button mat-stroked-button color="primary"
+                                (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
+                                Edit
+                            </button>
+                        </div>
+                        <div *ngIf="comment.userUID === currentUserID || authSRV.isAdmin">
+                            <button *ngIf="authSRV.isAdmin" mat-stroked-button color="primary"
+                                (click)="deleteComment(comment.key)">
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div *ngSwitchCase="true" class="editForm">

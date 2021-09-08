@@ -26,7 +26,7 @@ export class CommentsComponent implements OnInit {
   selectedComment: null;
   selectedCommentValue: string = "";
   newComment: any
-  test: any
+  currentUserID: any
 
 
 
@@ -52,7 +52,8 @@ export class CommentsComponent implements OnInit {
       })
     })
 
-    this.test = firebase.auth().currentUser?.uid
+    this.currentUserID = firebase.auth().currentUser?.uid;
+    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
 
 
   }

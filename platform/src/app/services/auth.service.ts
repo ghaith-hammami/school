@@ -8,7 +8,6 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Admin } from '../model/Admin'
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +31,7 @@ export class AuthService implements OnInit {
   getName() {
     if (firebase.auth().currentUser?.displayName === null) {
       this.name = "Admin"
+      this.profilePic = "../../assets/icons/leader.svg"
     } else {
       this.name = firebase.auth().currentUser?.displayName
       this.profilePic = firebase.auth().currentUser?.photoURL
