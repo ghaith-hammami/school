@@ -6,7 +6,7 @@
   <div class="navigation">
     <div class="burger_logo">
       <img src="../../assets/icons/menu.svg" class="burger"data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-      <h1>Drop <span>Of </span> <br>Change</h1>
+      <h1>Drop <span>Of </span> Change</h1>
     </div>
     <div class="help">
       <input id="toggle" class="toggle" type="checkbox" (click)='switchTheme()'>
@@ -85,17 +85,17 @@
           </div>
           <div class="flex" data-bs-dismiss="offcanvas" aria-label="Close" [routerLink]="['class_control']"
             routerLinkActive="active">
-            <svg class="nav_img" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 4C13.507 4.423 15.577 6.493 16 9H20C19.529 4.283 15.717 0.471 11 0V4Z" fill="white"/>
-              <path d="M16 11C15.522 13.833 13.018 15.949 10.051 15.949C6.74203 15.949 4.05103 13.258 4.05103 9.949C4.05103 6.982 6.16702 4.478 9.00002 4V0C3.95402 0.504 0.0510254 4.773 0.0510254 9.949C0.0510254 15.463 4.53703 19.949 10.051 19.949C15.227 19.949 19.496 16.046 20 11H16V11Z" fill="white"/>
+            <svg class="nav_img" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" fill="white">
+              <path d="M11 4C13.507 4.423 15.577 6.493 16 9H20C19.529 4.283 15.717 0.471 11 0V4Z"/>
+              <path d="M16 11C15.522 13.833 13.018 15.949 10.051 15.949C6.74203 15.949 4.05103 13.258 4.05103 9.949C4.05103 6.982 6.16702 4.478 9.00002 4V0C3.95402 0.504 0.0510254 4.773 0.0510254 9.949C0.0510254 15.463 4.53703 19.949 10.051 19.949C15.227 19.949 19.496 16.046 20 11H16V11Z" />
               </svg>
             <h6 class="nav-item">Classrooms</h6>
           </div>
           <div class="flex" data-bs-dismiss="offcanvas" aria-label="Close" (click)='authservice.signOUT()' routerLinkActive="active">
-            <svg class="nav_img" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="nav_img" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" fill="red">
               <path d="M20 10L16 6V9H8V11H16V14L20 10ZM18 16C16.7407 17.6791 14.985 18.9193 12.9817 19.5451C10.9783 20.1709 8.82884 20.1505 6.83772 19.4868C4.8466 18.8231 3.11478 17.5498 1.88758 15.8471C0.660374 14.1444 0 12.0988 0 10C0 7.90118 0.660374 5.85555 1.88758 4.1529C3.11478 2.45024 4.8466 1.17687 6.83772 0.513167C8.82884 -0.15054 10.9783 -0.170937 12.9817 0.454865C14.985 1.08067 16.7407 2.32094 18 4H15.27C14.1153 2.98166 12.6913 2.31814 11.1689 2.08906C9.64643 1.85997 8.09023 2.07506 6.68699 2.7085C5.28376 3.34194 4.09312 4.36683 3.25793 5.66019C2.42274 6.95354 1.9785 8.46042 1.9785 10C1.9785 11.5396 2.42274 13.0465 3.25793 14.3398C4.09312 15.6332 5.28376 16.6581 6.68699 17.2915C8.09023 17.9249 9.64643 18.14 11.1689 17.9109C12.6913 17.6819 14.1153 17.0183 15.27 16H18Z" fill="#FF0000"/>
             </svg>
-            <h6  class="nav-item">Sign Out</h6>
+            <h6  class="nav-item" style="color: red;">Sign Out</h6>
           </div>
 
         </div>

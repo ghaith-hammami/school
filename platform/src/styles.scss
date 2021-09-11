@@ -13,7 +13,7 @@
   --background_color: #edf2f5;
   --primary_btn: #ff9900;
   --secondary_btn: rgb(223, 223, 223);
-  --divs_bg: rgb(223, 223, 223);
+  --divs_bg: linear-gradient(to bottom, #adadad 0%, #ecececb7 100%);
 }
 
 .dark-theme {
@@ -30,7 +30,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "roboto", sans-serif;
+  font-family: "montserrat", sans-serif;
 }
 html {
   overflow-x: hidden;
@@ -263,5 +263,4 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

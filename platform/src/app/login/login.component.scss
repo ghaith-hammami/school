@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: 'roboto',sans-serif;
+    font-family: 'montserrat',sans-serif;
     position: relative;
     //background: linear-gradient(180deg, );
     padding: 2rem 10rem;
@@ -24,10 +24,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        
         h1{
             margin-bottom: 3.5rem;
             font-size: 36px;
             font-weight: bold;
+            font-family: 'montserrat',sans-serif;
         }
         .nav{
             width: 100%;
@@ -38,7 +40,7 @@
             background-color: #0B1649;
             color: white;
             font-weight: bold;
-            font-family: 'roboto',sans-serif;
+            font-family: 'montserrat',sans-serif;
         }
         
     }

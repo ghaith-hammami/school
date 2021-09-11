@@ -1,10 +1,12 @@
 .form{
+    font-family: 'montserrat',sans-serif;
       width: 100%;
       display: flex;
       flex-direction: column;
       .input_box{
             margin-bottom: 1.5rem;
           span{
+            font-family: 'montserrat',sans-serif;
               position: absolute;
               bottom: 0;
               left: 0.3rem ;
@@ -22,6 +24,7 @@
               border-radius: 5px;
               width:20.69rem;
               height: 3.9rem;
+              font-family: 'montserrat',sans-serif;
               &:focus{
                   outline: none;
                   border: 2px solid black ;
@@ -43,8 +46,9 @@
              height:3.25rem;
              font-size: 1.2rem;
              font-weight: bold;
-             background-color:#F8B200 ;
+             background-color:#0652FD ;
             align-self: flex-end;
+            color: white;
         }
 }
 

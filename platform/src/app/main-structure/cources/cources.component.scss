@@ -49,8 +49,10 @@
 }
 .button_box {
     display: flex;
-    width: fit-content;
+    width: 70%;
+    flex-wrap: wrap;
     height: fit-content;
+
 }
 .btn_height {
     height: 2.5rem;

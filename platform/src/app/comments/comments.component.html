@@ -24,15 +24,15 @@
                     <h4 class="side_details">
                         {{comment.user}}
                     </h4>
-                    <p>
+        <p style="color: var(--secondary_color);font-family: 'Montserrat' ,sans-serif;">
                         {{comment.commentContent}}
                     </p>
                     <div *ngIf="comment.userUID === test">
-                        <button mat-stroked-button color="primary"
+                        <button class="side_btn"  color="primary"
                             (click)="editSelectedComment(comment.commentContent, comment.key, comment)">
                             Edit
                         </button>
-                        <button mat-stroked-button color="primary" (click)="deleteComment(comment.key)">
+                        <button class="side_btn"  color="primary" (click)="deleteComment(comment.key)">
                             Delete
                         </button>
                     </div>
@@ -42,7 +42,7 @@
                         <textarea matInput formControlName="editedCommentContent" name="commentContent"
                             [(ngModel)]="selectedCommentValue">
                             </textarea>
-                        <button mat-flat-button color="primary" type="submit">Save</button>
+                        <button class="side_btn" color="primary" type="submit">Save changes</button>
                     </form>
                 </div>
 
@@ -84,5 +84,5 @@
 
 
 <div *ngIf='noComments' class="comment">
-    <h2>Be the first to add a comment!</h2>
+    <h2 style="font-size: 1.2rem;color: var(--secondary_color);font-family: 'montserrat' ,sans-serif;">Be the first to add a comment!</h2>
 </div>

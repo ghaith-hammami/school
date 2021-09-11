@@ -1,6 +1,16 @@
 .side_details {
     font-size: 0.7rem;
     color: var(--secondary_color);
+
+}
+.side_btn{
+    border: none;
+    font-size: 1rem;
+    color:#20558b;
+    margin-right: 1rem;
+    font-family: 'Montserrat' ,sans-serif;
+    background:transparent ;
+
 }
 
 .like {
@@ -17,6 +27,7 @@
 }
 
 .comment {
+    
     border-bottom: 1px solid rgba(121, 121, 121, 0.5);
     padding: 0 5vw;
     padding-top: 2rem;
@@ -28,15 +39,20 @@
     padding: 0.5rem 0;
     flex-basis: 90%;
     text-align: justify;
+    
     h4 {
         font-size: 1.3rem;
+        font-family: 'Montserrat' ,sans-serif;
     }
     h6 {
         display: inline;
+        font-family: 'Montserrat' ,sans-serif;
     }
     p {
         margin-top: 1rem;
         font-size: 1rem;
+        font-family: 'Montserrat' ,sans-serif;
+        
     }
 }
 .profile {
