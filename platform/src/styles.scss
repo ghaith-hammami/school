@@ -70,7 +70,8 @@ body {
 }
 ::-webkit-scrollbar-track {
   border-radius: 30px;
-  background: var(--background);
+  background: transparent;
+  
 }
 
 /*btn animation*/
