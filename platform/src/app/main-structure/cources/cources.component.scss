@@ -12,8 +12,7 @@
         font-family: "El Messiri", sans-serif;
         position: relative;
     }
-
-    background: var(--background_color);
+    background: var(--background);
 }
 .page_head {
     background: url(../../../assets/images/tom-hermans-9BoqXzEeQqM-unsplash.jpg) no-repeat top;
@@ -37,9 +36,6 @@
     width: 9rem;
     color: #f8b200;
 }
-.modal-header {
-    background-color: #ffb700;
-}
 .buttons {
     width: 100%;
     display: flex;
@@ -58,85 +54,13 @@
     height: 2.5rem;
     align-self: flex-end;
 }
-.add_course {
-    padding: 0.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    /*   height: 10.6rem;*/
-    height: fit-content;
-    h3 {
-        font-size: 1.15rem;
-    }
-}
 
-.form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .input_box {
-        width: 100%;
-        span {
-            position: absolute;
-            bottom: 0;
-            left: 0.3rem;
-            color: #f8b200;
-            padding: 1rem 0;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-        position: relative;
-        input {
-            padding: 0 0.3rem;
-            font-weight: bold;
-            border: none;
-            background-color: rgba(196, 196, 196, 0.1);
-            border-radius: 5px;
-            width: 100%;
-            height: 3.1rem;
-            &:focus {
-                outline: none;
-                border: 1px solid black;
-            }
-            &:focus ~ span {
-                bottom: 20%;
-            }
-            &:valid ~ span {
-                bottom: 20%;
-            }
-        }
-    }
-}
 
 .btn-primary {
     background-color: var(--primary_btn);
     border: none;
 }
-.modal-title {
-    font-weight: bold;
-    color: white;
-}
-.details {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: fit-content;
 
-    select,
-    a {
-        background: none;
-        border: none;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-    a {
-        color: #4fa4b4;
-    }
-}
 .course_cont {
     width: 100%;
     height: fit-content;
@@ -148,29 +72,28 @@
 
 .course_div {
     h3 {
-        color: var(--primary_color);
+        color: var(--primary_btn);
+        width: 25%;
     }
     margin-bottom: 1rem;
     width: 100%;
     padding: 0.8rem 0.5rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     .course_title {
         font-size: 1rem;
         font-weight: bold;
         color: var(--secondary_color);
+        width: 25%;
     }
     h6 {
         font-size: 0.8rem;
         font-weight: 400;
         color: var(--secondary_color);
+        width: 25%;
     }
-    a {
-        color: #4f00f8;
-        margin-right: 0.3rem;
-        text-decoration: none;
-    }
+    
 }
 
 .my-pagination::ng-deep {
@@ -191,3 +114,29 @@ footer {
 .files {
     z-index: 200000;
 }
+
+
+.modal-content{
+    background: var(--modal_bg);
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    padding: 1rem 2rem;
+    mat-label{
+        color: var(--secondary_color);
+    }
+    
+}
+.modal-header{
+    width:100%;
+    color: var(--secondary_color);
+    border-color:var(--secondary_color) ;
+    margin-bottom: 2rem;
+}
+.modal-footer{
+    margin-top :2rem
+}
+.modal-body{
+    background:var(--modal_bg);
+}
+

@@ -1,11 +1,12 @@
 .all_page_container {
-    z-index: 999999999999999999;
+    height: 100%;
 }
 .toggle {
     z-index: 5;
     width: 30px;
     height: 30px;
 }
+
 .offcanvas {
     padding: 2rem 0;
     background: transparent;
@@ -66,17 +67,19 @@
     }
 }
 .active {
-    color: #4f00f8 !important;
+    color: #FFAA00 !important;
     font-weight: bold;
     .nav_img {
-        fill: #4f00f8;
+        fill: #FFAA00;
     }
 }
 
 .navigation {
+
     .burger_logo{
         display: flex;
         z-index: 999999;
+        align-items: center;
     }
     z-index: 999999;
 
@@ -87,6 +90,9 @@
         z-index: 999999;
         color: var(--secondary_color);
         margin-top: 1rem;
+        border-left: 1px solid var(--secondary_color);
+        width: 12rem;
+        text-align: right;
         span {
             font-size: 1rem;
             font-family: "El Messiri", sans-serif;
@@ -96,7 +102,6 @@
     padding: 0 10vw;
     width: 100vw;
     height: 10vh;
-    background: var(--divs_bg);
     position: fixed;
     display: flex;
     align-items: center;
@@ -106,7 +111,8 @@
     left: 0rem;
 }
 .mask {
-    padding: 0;
+    padding: -3px;
+    margin: 0;
     width: 100vw;
     height: 100vh;
 }
@@ -118,17 +124,17 @@
     width: 30px;
     height: auto;
     z-index: 3;
-    fill: #4f00f8;
-    margin-right: 1rem;
+    fill: var(--secondary_color);
+    margin-right: 3rem;
 }
 
 .profile_cont {
+    margin-top: 4rem;
     h5 {
+        margin-left: -1.2rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: white;
-    }
-    h6 {
-        font-style: italic;
     }
 }
 .help{
@@ -195,53 +201,14 @@ margin-right: 1rem;
 .modal-content{
     background-color: white;
 }
-.modal-body{
-    .icon_alert{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-right: 3rem;
-    }
-    flex-wrap: wrap;
-    padding: 2rem 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    span{
-        font-size: 1.5rem;
-        font-weight: bold;
 
-    }
-    h1{
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 2rem;
-        color: #11205f;
-    }
-    p{
-        color: #0e1638;
-        margin: 0;
-        font-weight: 600;
-        //align-self: flex-start;
-    }
-    img{
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        width: 50px;
-        height: auto;
-    }
-}
-.modal-footer{
-    border: none;
-    display: flex;
-    justify-content: center;
-}
 
 
 //notif
 .notif_icon{
     width: 25px;
+    height: auto;
+    fill:var(--secondary_color);
 }
 .dropdown-menu{
     inset: 1.2rem auto auto 0px !important;

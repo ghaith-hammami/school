@@ -1,4 +1,4 @@
-<div class="all_page">
+<div class="all_page ">
   <div class="bundle">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -22,10 +22,7 @@
                 <input name="title" type="text" placeholder="title..."> -->
               <!-- <label for="post_text">post body</label>
                 <textarea name="post_text" id="post_text" placeholder="type here..."></textarea> -->
-              <div class="form-group">
-                <label for="PostText">Post Text:</label>
-                <input formControlName="PostText" type="text" id="PostText" class="form-control">
-              </div>
+              
               <!-- <div class="form-group">
                 <label for="Author">Author's name:</label>
                 <input formControlName="Author" type="text" id="Author" class="form-control">
@@ -33,13 +30,17 @@
               <div class="form-group">
                 <!-- so this feature is acting very weird, sometimes it works, and sometimes not -->
                 <label for="Topic">Post Topic:</label>
-                <input formControlName="Topic" type="text" id="Topic" class="form-control" matInput
+                <input  formControlName="Topic" type="text" id="Topic" style="padding:.5rem 0" class="form-control" matInput
                   [matAutocomplete]='auto' [formControl]='myControl'>
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]='displayFn'>
                   <mat-option *ngFor='let option of filteredOptions | async' [value]="option">
                     {{option}}
                   </mat-option>
                 </mat-autocomplete>
+              </div>
+              <div class="form-group">
+                <label for="PostText">Post Text:</label>
+                <textarea style="height: 10rem;" formControlName="PostText" type="text" id="PostText" class="form-control"></textarea>
               </div>
 
             </div>
@@ -65,17 +66,7 @@
     <div class="page_head">
       <div class="title_filter">
         <h1>Ask, Question & Discuss.</h1>
-        <!-- <div class="button_box">
-          <div class="btn btn-three">
-            <span>NEW</span>
-          </div>
-          <div class="btn btn-three">
-            <span>MATH</span>
-          </div>
-          <div class="btn btn-three">
-            <span>SVT</span>
-          </div>
-        </div> -->
+      
         <app-posts-list-search-bar (sendQuery) = "getQuery($event)"></app-posts-list-search-bar>
       </div>
       <button type="button" class="add_post_btn btn btn-one" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -91,7 +82,7 @@
 
     <!-- list of posts -->
     <div class="post_div " (click)='getKey(item.key)' routerLink="'/', item.key" 
-      *ngFor="let item of posts  | search: query | paginate: { itemsPerPage: 10, currentPage:page ,totalItems: length }">
+      *ngFor="let item of posts  | search: query ">
       <div class="info">
         <h1 class="blog_title">
             {{item.PostHeadline}}
@@ -103,9 +94,8 @@
       <p class="text">{{item.PostText | slice :0:200 }} ...</p>
       <small class="text-muted">{{item.numberOFComments}} answers</small>
 
-      <!-- <a href="#" class="RM">Read More</a> -->
     </div>
-    <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    
     <div class="footer">
       <img class="avatar" src="../../../assets/images/avatar.svg" alt="">
     </div>

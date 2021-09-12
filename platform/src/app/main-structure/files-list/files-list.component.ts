@@ -15,7 +15,7 @@ export class FilesListComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit(): void {
-
+    console.log(this.Files2.length)
     const query: any = this.uploadService.db.list(this.uploadService.coursesFiles, ref => ref.orderByChild('added').equalTo(false))
     query.snapshotChanges().pipe(map((changes: any) =>
       changes.map((c: any) => ({ key: c.payload.key, ...c.payload.val() })))).subscribe((rs: any) => {

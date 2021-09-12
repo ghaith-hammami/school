@@ -7,23 +7,30 @@
 @import "~@syncfusion/ej2-buttons/styles/material.css";
 
 .light-theme {
+  --bundle_background:#edf2f5;
+  --nav_background :linear-gradient(to bottom, rgba(128, 128, 128, 0.5) 0%, #edf2f581 100%);
   --default_text_color: #20558b;
   --primary_color: #ff9900;
   --secondary_color: #080c1d;
-  --background_color: #edf2f5;
+  --background: #edf2f5;
   --primary_btn: #ff9900;
   --secondary_btn: rgb(223, 223, 223);
   --divs_bg: linear-gradient(to bottom, #adadad 0%, #ecececb7 100%);
+  --modal_bg :#edf2f5;
 }
 
 .dark-theme {
+  --bundle_background:   linear-gradient(110.27deg, #042C6A 0%, #10204D 47.9%, #0F0A18 100%);
+
+  --nav_background :linear-gradient(to bottom, #00003370 0%, #0b436600 100%);
   --default_text_color: #edf2f5;
   --primary_color: #20558b;
   --secondary_color: #edf2f5;
-  --background_color: linear-gradient(180deg, #000033 0%, #000000 100%);
+  --background: linear-gradient(110.27deg, #042C6A 0%, #27193C 48.96%, #030205 100%);
   --primary_btn: #ff9900;
   --secondary_btn: #20558b;
   --divs_bg: #1c1c66;
+  --modal_bg :rgb(68, 68, 68);
 }
 
 * {
@@ -47,7 +54,7 @@ body {
 }
 .padding_page {
   padding: 0 10vw;
-  padding-top: 9vh;
+  padding-top: 10vh;
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -63,7 +70,7 @@ body {
 }
 ::-webkit-scrollbar-track {
   border-radius: 30px;
-  background-color: #0b174b;
+  background: var(--background);
 }
 
 /*btn animation*/
@@ -171,80 +178,35 @@ body {
   height: 100%;
 }
 
-//animated bg
-@function multiple-box-shadow($n) {
-  $value: "#{random(2000)}px #{random(2000)}px #FFF";
-  @for $i from 2 through $n {
-    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
-  }
-  @return unquote($value);
-}
-$shadows-small: multiple-box-shadow(700);
-$shadows-medium: multiple-box-shadow(200);
-$shadows-big: multiple-box-shadow(100);
-// n is number of stars required
-
-#stars {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-  }
-}
-#stars2 {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
-
-  &:after {
-    content: " ";
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-  }
-}
-#stars3 {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  box-shadow: $shadows-big;
-  animation: animStar 150s linear infinite;
-  &:after {
-    content: " ";
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-  }
-}
-
-@keyframes animStar {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-2000px);
-  }
-}
-
-.footer {
-  margin-top: 2rem;
+.footer{
+  z-index: 2;
   width: 100vw;
-  background: linear-gradient(155deg, #ff9900 8.07%, #ff9900 29.67%, #080c1d 29.68%, #080c1d 60.42%, #113e99 60.42%);
+  height: 40vh;
+  border-top: 1px solid rgb(175, 175, 175) ;
+  display: flex;
+  padding: 0 10vw;
+  align-items: center;
+  color: white;
+  h1{
+    font-family: 'El Messiri', sans-serif ;
+    font-size: 1.75rem !important;
+    width: 25%;
+  }
+  span{
+    font-family: 'El Messiri', sans-serif ;
+    font-size: 1rem;
+  }
+  .contact{
+    
+    h4{font-family: 'El Messiri', sans-serif ;
+    margin-bottom: 1rem;}
+    ul{
+      list-style: none;
+      li{font-family: 'El Messiri', sans-serif ;}
+    }
+  }
+  margin-top: 2rem;
+  background: linear-gradient(110.27deg, #042C6A 0%, #27193C 48.96%, #030205 100%);;
   height: 40vh;
   position: relative;
 }

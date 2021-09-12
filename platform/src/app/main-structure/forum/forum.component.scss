@@ -2,12 +2,10 @@
 .index {
   z-index: 3;
 }
-.all_page {
-  background: var(--background_color);
-}
+
 .posts_page {
+  background: var(--background);
   color: var(--default_text_color);
-  font-family: "roboto";
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -19,13 +17,13 @@
   }
 }
 .bundle {
-  background: transparent;
   .bundle_img {
     width: 100%;
     height: auto;
     position: absolute;
     top: 0;
     left: 0;
+    
   }
   width: 100%;
   height: 80vh;
@@ -34,6 +32,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background:var(--bundle_background);
   &::after {
     content: "";
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
@@ -67,27 +66,7 @@
   }
 }
 
-/* .quote{
-  height: fit-content;
-  font-family:'El Messiri', sans-serif;
-  display: flex;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-  img{
-    width: 2rem;
-    align-self: start;
-    &:last-of-type{
-      transform: rotate(180deg);
-      align-self: flex-end;
-    }
-  }
-  h1{
-    color: #ffb700;
-    padding: 0 1rem;
-  }
 
-} */
 
 .page_head {
   height: fit-content;
@@ -96,46 +75,33 @@
   display: flex;
   justify-content: space-between;
 }
-
-.modal-header {
-  background-color: #ffb700;
+.add_post_btn{
+  height: 50%;
 }
-.button_box {
+
+
+.modal-content{
+  background: var(--modal_bg);
   display: flex;
-  width: fit-content;
-  height: fit-content;
-}
-.add_post_btn {
-  height: 2.5rem;
-  align-self: flex-end;
-  color: var(--primary_btn);
-  width: 9rem;
-}
-
-.modal-content {
-  height: fit-content;
-}
-.form {
-  width: 100%;
-  label {
-    display: block;
-    font-size: 24px;
-    font-weight: bold;
+  flex-direction: column;
+  align-items: space-between;
+  padding: 1rem 2rem;
+  mat-label{
+      color: var(--secondary_color);
   }
-  input {
-    width: 50%;
-    margin-bottom: 1rem;
-    height: 2rem;
-  }
-  textarea {
-    width: 100%;
-    height: 45vh;
-  }
+  
 }
-
-.modal-title {
-  font-weight: bold;
-  color: white;
+.modal-header{
+  width:100%;
+  color: var(--secondary_color);
+  border-color:var(--secondary_color) ;
+  margin-bottom: 2rem;
+}
+.modal-footer{
+  margin-top :2rem
+}
+.modal-body{
+  background:var(--modal_bg);
 }
 .post_div {
   z-index: 2000;
@@ -178,6 +144,13 @@
     bottom: 0;
     left: 0;
   }
+}
+label{
+  color: var(--secondary_color);
+}
+.form-control{
+  background: var(--modal_bg);
+  margin-bottom: 1rem;
 }
 
 .my-pagination::ng-deep {

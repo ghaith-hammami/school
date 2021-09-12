@@ -7,8 +7,7 @@ import { AuthService } from 'app/services/auth.service';
 import { CourseService } from 'app/services/course.service';
 import { UploadFileService } from 'app/services/upload-file.service';
 import { map } from 'rxjs/operators';
-import firebase from 'firebase/app'
-
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-cources',
@@ -24,7 +23,8 @@ export class CourcesComponent implements OnInit {
   updatedFile: any;
   length!: number
 
-  constructor(private courseServices: CourseService,
+  constructor(
+    private courseServices:CourseService,
     private uploadService: UploadFileService, private router: Router,
     private activatedRoute: ActivatedRoute, public authSRV: AuthService) {
     this.addCourse = new FormGroup({
@@ -148,7 +148,8 @@ export class CourcesComponent implements OnInit {
 
 
 
-
+  
   page = 1
+
 
 }
