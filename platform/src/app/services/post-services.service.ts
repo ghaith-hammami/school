@@ -71,6 +71,10 @@ export class PostServicesService {
     return this.PostRef.remove()
   }
 
+  deleteOnePost(postKey: string) {
+    return this.PostRef.remove(postKey);
+  }
+
   deleteComment(commentKey: string) {
     return this.CommentRef.remove(commentKey);
   }

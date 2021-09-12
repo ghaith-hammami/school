@@ -38,17 +38,15 @@ export class RoomControlService {
 
   addFireAlert() {
     this.db.database.ref(this.firePath).on("child_changed", (snapshot) => {
-      if (snapshot.val() === true) {
+      console.log(snapshot.val());
+      if (snapshot.val() === false) {
         this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
           changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
             if (rs) {
-              for (let i of rs) {
-                const realRoomNumber = i.val.classroomNumber
-                this.alert.title = "Fire in classroom number " + realRoomNumber;
-                this.alert.body = "There have been a detection of fire in classroom number " + realRoomNumber;
-                this.alert.date = Date.now()
-                this.alertsRef.push(this.alert);
-              }
+              this.alert.title = "Fire in classroom number " + rs[0].val.classroomNumber;
+              this.alert.body = "There have been a detection of fire in classroom number " + rs[0].val.classroomNumber;
+              this.alert.date = Date.now()
+              this.alertsRef.push(this.alert);
             }
           })
       }
@@ -56,19 +54,17 @@ export class RoomControlService {
     })
   }
 
+
   addNoiseAlert() {
     this.db.database.ref(this.noisePath).on("child_changed", (snapshot) => {
       if (snapshot.val() === true) {
         this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
           changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
             if (rs) {
-              for (let i of rs) {
-                const realRoomNumber = i.val.classroomNumber
-                this.alert.title = "Too much noise in classroom number " + realRoomNumber;
-                this.alert.body = "The intenisty of sound is too high in classroom number " + realRoomNumber;
-                this.alert.date = Date.now()
-                this.alertsRef.push(this.alert);
-              }
+              this.alert.title = "Too much noise in classroom number " + rs[0].val.classroomNumber;
+              this.alert.body = "The intenisty of sound is too high in classroom number " + rs[0].val.classroomNumber;
+              this.alert.date = Date.now()
+              this.alertsRef.push(this.alert);
             }
           })
       }
@@ -95,4 +91,11 @@ export class RoomControlService {
     return this.db.list(this.roomsPath, ref => ref.orderByKey().equalTo(key));
   }
 
+  deleteAllAlerts(): Promise<any> {
+    return this.alertsRef.remove();
+  }
+
 }
+
+
+

@@ -10,6 +10,10 @@
     <div class="post_cont">
       <div class="post_content">
         <p>{{certainPost.PostText}}</p>
+        <div *ngIf="certainPost.authorUID === currentUserUid">
+          <button (click) = "deleteMyPost()" type="button" class="btn btn-dark">Delete My Post</button>
+        </div>
+
         <!--         <button class="btn btn-three" (click)="toogleTag()">comment</button>
  -->
       </div>
@@ -64,7 +68,7 @@
         <div class="contentt">
           <form [formGroup]="AddComment" #formDirective="ngForm" (ngSubmit)="onCommentSubmit(formDirective)">
             <mat-form-field style="width: 100%;" appearance="outline" [color]='controlColor'>
-              <mat-label style="color: var(--secondary_color);" >type here...</mat-label>
+              <mat-label style="color: var(--secondary_color);">type here...</mat-label>
               <textarea matInput formControlName="commentContent"></textarea>
             </mat-form-field>
             <!-- <mat-form-field appearance="outline" [color]='controlColor'>

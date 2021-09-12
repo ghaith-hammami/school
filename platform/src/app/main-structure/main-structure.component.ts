@@ -39,8 +39,12 @@ export class MainStructureComponent implements OnInit {
   }
 
   switchTheme() {
-    this.theme_ser.sendClickEvent()
+    this.theme_ser.sendClickEvent();
   }
   notif_list=[1,1,,1,1,1,1,1,1,1,1,1,1,1,1]
+
+  deletAllNotifications() {
+    this.roomSRV.deleteAllAlerts();
+  }
 
 }

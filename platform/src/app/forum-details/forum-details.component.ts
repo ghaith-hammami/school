@@ -23,11 +23,14 @@ export class ForumDetailsComponent implements OnInit {
   date = new Date()
   postKey!: string
   comments: any
+  currentUserUid: any;
+  
+
 
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postServices: PostServicesService, private authServ: AuthService
+    private postServices: PostServicesService, public authServ: AuthService
   ) {
     this.AddComment = new FormGroup({
       "commentContent": new FormControl(null, [Validators.required]),
@@ -57,6 +60,9 @@ export class ForumDetailsComponent implements OnInit {
     return this.AddComment.invalid ? 'primary' : 'primary';
   }
 
+  deleteMyPost() {
+    this.postServices.deleteOnePost(this.postKey);
+  }
 
 
 
@@ -84,6 +90,7 @@ export class ForumDetailsComponent implements OnInit {
 
       })
 
+      this.currentUserUid = firebase.auth().currentUser?.uid;
 
     this.authServ.getName();
 
