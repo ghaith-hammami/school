@@ -7,6 +7,8 @@ import { AuthService } from 'app/services/auth.service';
 import { PostServicesService } from 'app/services/post-services.service';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import firebase from 'firebase/app'
+
 
 @Component({
   selector: 'app-forum',
@@ -83,7 +85,8 @@ export class ForumComponent implements OnInit {
     this.post.Created = this.pipe.transform(Date(), 'yyyy-dd-MM HH:mm:ss');
     this.post.dateNow = Date.now();
     this.post.negativeTimestamp = - this.post.dateNow;
-    this.post.numberOFComments = 0
+    this.post.numberOFComments = 0;
+    this.post.authorUID = firebase.auth().currentUser?.uid;
     this.postService.CreatePost(this.post);
     this.AddPost.reset();
   }

@@ -3,6 +3,7 @@ export class Post{
     PostHeadline!:string;
     PostText!:string;
     Author!:string;
+    authorUID!: any;
     Topic!:string;
     Created!: any;
     dateNow!: any;
