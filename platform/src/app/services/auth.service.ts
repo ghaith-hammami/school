@@ -20,6 +20,7 @@ export class AuthService implements OnInit {
   adminRef: AngularFireList<Admin>
   admin!: boolean
 
+
   constructor(public afAuth: AngularFireAuth, private router: Router, public db: AngularFireDatabase) {
     this.adminRef = this.db.list(this.adminPath)
   }
@@ -57,9 +58,12 @@ export class AuthService implements OnInit {
         if (res.length !== 0) {
           for (let i of res) {
             this.isAdmin = this.getrole(i.role)
+            localStorage.setItem('isAdmin',String(this.isAdmin))
           }
         }
-        else { this.isAdmin = false }
+        else { this.isAdmin = false;
+          localStorage.setItem('isAdmin',String(false))
+         }
 
         return this.isAdmin
 
@@ -83,7 +87,9 @@ export class AuthService implements OnInit {
   }
 
   signOUT() {
-    this.afAuth.signOut().then(() => { this.router.navigate(['welcome']) })
+    this.afAuth.signOut().then(() => { this.router.navigate(['welcome']) ;
+  localStorage.clear();
+  })
 
   }
 
@@ -94,6 +100,13 @@ export class AuthService implements OnInit {
           () => {
 
             this.router.navigate(['platform']);
+            const uid = firebase.auth().currentUser?.uid
+            console.log(uid);
+            
+            if(uid){
+              localStorage.setItem('user',uid)
+              this.getAfmin(localStorage.getItem('user'))
+            }
             resolve();
           },
           (error) => {

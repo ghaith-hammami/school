@@ -11,7 +11,7 @@
                 <p>Temperature :<span>{{room.temperature}}°C</span></p>
                 <p>Humidity :<span>{{room.humidity}}%</span></p>
                 <!-- have to change starting from here -->
-                <div *ngIf="authSRV.isAdmin; else notAdmin">
+                <div *ngIf="isAdmin; else notAdmin">
                     <p>
                         A.C State :
                         <input [checked]="room.airConditionner" type="checkbox" id="AC_state" />

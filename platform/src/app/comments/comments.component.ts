@@ -20,10 +20,11 @@ export class CommentsComponent implements OnInit {
   currentPost: any
   noComments: boolean = true
   commentKey: any;
+  isAdmin : any;
 
 
   editComment!: FormGroup;
-  selectedComment: null;
+  selectedComment: any= null;
   selectedCommentValue: string = "";
   newComment: any
   currentUserID: any
@@ -38,8 +39,9 @@ export class CommentsComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {    
+  
+    this.isAdmin = localStorage.getItem("isAdmin");
     //get the current key of the post from the url
     this.activatedRoute.params.subscribe((params) => {
       this.currentPostKey = params['key']
@@ -53,9 +55,7 @@ export class CommentsComponent implements OnInit {
     })
 
     this.currentUserID = firebase.auth().currentUser?.uid;
-    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
-
-
+    
   }
 
   //delete the comment

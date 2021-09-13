@@ -22,6 +22,7 @@ export class CourcesComponent implements OnInit {
   subjects: any;
   updatedFile: any;
   length!: number
+  isAdmin: any;
 
   constructor(
     private courseServices:CourseService,
@@ -29,12 +30,14 @@ export class CourcesComponent implements OnInit {
     private activatedRoute: ActivatedRoute, public authSRV: AuthService) {
     this.addCourse = new FormGroup({
       "courseTitle": new FormControl(null, [Validators.required]),
-      "courseSubject": new FormControl(null, [Validators.required])
+      "courseSubject": new FormControl(null, [Validators.required]),
+      "CourseTeacher": new FormControl(null, [Validators.required])
     })
   }
 
   onSubmit(formDirective: any) {
     this.course.Title = this.addCourse.value.courseTitle;
+    this.course.teacher = this.addCourse.value.CourseTeacher;
     if (this.addCourse.value.courseSubject !== null) {
       this.course.Subject = this.addCourse.value.courseSubject.toLowerCase();
     }
@@ -64,7 +67,8 @@ export class CourcesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
+    this.isAdmin = localStorage.getItem('isAdmin');
+    
 
     //display the courses' list logic
     this.activatedRoute.params.subscribe((params) => {

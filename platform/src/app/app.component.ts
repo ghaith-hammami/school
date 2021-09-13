@@ -36,6 +36,7 @@ export class AppComponent {
 
   InitializeTheme = () => this.renderer.addClass(this.document.body, this.theme)
   ngOnInit(): void {
+
     
     this.InitializeTheme();
     //alerts 

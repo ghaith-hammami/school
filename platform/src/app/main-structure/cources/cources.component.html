@@ -17,6 +17,10 @@
                   <mat-label>Title</mat-label>
                   <input matInput type="text" formControlName="courseTitle">
                 </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Teacher</mat-label>
+                  <input matInput type="text" formControlName="CourseTeacher">
+                </mat-form-field>
                 <!--                 </div>
  -->
                 <div class="details">
@@ -33,7 +37,7 @@
                   </mat-form-field>
 
                   <label>
-                    <input type="file"  class="text-nowrap text-truncate" (change)="selectFile($event)" />
+                    <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
                   </label>
 
                   <button mat-raised-button color="accent" [disabled]="!selectedFiles" (click)="upload()">
@@ -75,10 +79,10 @@
       <div *ngFor="let option of subjects; let i = index" class="btn btn-three" [ngStyle]="option.toLowerCase() == displayedSubject? 
           {'background-color': '#3f51b5'} : {'color':  'black'}" (click)="changeStyling(option); selectSubject(option)"
         routerLink="['/platform/courses']" [queryParams]="{ subject: option }">
-        <span>{{option | titlecase}}</span> 
+        <span>{{option | titlecase}}</span>
       </div>
     </div>
-    <div *ngIf="authSRV.isAdmin">
+    <div *ngIf="isAdmin">
       <button class="btn btn-one btn_height" data-bs-toggle="modal" data-bs-target="#exampleModal">
         add course
       </button>
@@ -86,17 +90,19 @@
   </div>
 
   <div class="course_cont">
-
-    <div class="course_div btn-three"
-      *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems: this.courses.length }">
-      <h3>{{item.Subject | titlecase}}</h3>
-      <h2 class="course_title">{{item.Title | titlecase}}</h2>
-      <h6>Mr foulen fouleni</h6>
-      <div *ngIf="item.files" class="files">
-        <strong style="color: var(--secondary_color);">Attachments</strong>
-        <app-course-files [course]="item"></app-course-files>
+    <div *ngIf="courses">
+      <div class="course_div btn-three"
+        *ngFor="let item of courses | paginate: { itemsPerPage: 10, currentPage:page ,totalItems: this.courses.length }">
+        <h3>{{item.Subject | titlecase}}</h3>
+        <h2 class="course_title">{{item.Title | titlecase}}</h2>
+        <h6>Mr foulen fouleni</h6>
+        <div *ngIf="item.files" class="files">
+          <strong style="color: var(--secondary_color);">Attachments</strong>
+          <app-course-files [course]="item"></app-course-files>
+        </div>
       </div>
     </div>
+
     <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
   </div>
   <footer class="footer">

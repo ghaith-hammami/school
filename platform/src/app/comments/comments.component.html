@@ -34,7 +34,7 @@
                                 Edit
                             </button>
                         </div>
-                        <div class="side_btn" *ngIf="comment.userUID === currentUserID || authSRV.isAdmin">
+                        <div class="side_btn" *ngIf="comment.userUID === currentUserID || isAdmin">
                             <button class="side_btn"
                                 (click)="deleteComment(comment.key)">
                                 Delete

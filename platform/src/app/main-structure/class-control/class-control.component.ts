@@ -15,6 +15,7 @@ import firebase from 'firebase/app'
 export class ClassControlComponent implements OnInit {
 
   classrooms: any
+  isAdmin: any;
 
   constructor(private roomService: RoomControlService, private activeRoute: ActivatedRoute,
     public authSRV: AuthService) { }
@@ -23,7 +24,8 @@ export class ClassControlComponent implements OnInit {
   ngOnInit(): void {
 
     //
-    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
+    this.isAdmin = localStorage.getItem('isAdmin');
+ 
     //
     this.roomService.getRooms().snapshotChanges().pipe(map(changes =>
       changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))))

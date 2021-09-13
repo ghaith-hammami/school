@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   news= new News();
   submitted= false;
   News: any;
+  isAdmin: any
 
   constructor(private  newsService:NewsService, public authSRV: AuthService) { 
     this.AddNews = new FormGroup({
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNews();
-    this.authSRV.getAfmin(firebase.auth().currentUser?.uid);
+    this.isAdmin = localStorage.getItem('isAdmin');
 
   }
   getAllNews() {

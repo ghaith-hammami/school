@@ -72,6 +72,23 @@ export class RoomControlService {
     })
   }
 
+  addTheftAlert() {
+    this.db.database.ref(this.noisePath).on("child_changed", (snapshot) => {
+      if (snapshot.val() === true) {
+        this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
+          changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
+            if (rs) {
+              this.alert.title = "Too much noise in classroom number " + rs[0].val.classroomNumber;
+              this.alert.body = "The intenisty of sound is too high in classroom number " + rs[0].val.classroomNumber;
+              this.alert.date = Date.now()
+              this.alertsRef.push(this.alert);
+            }
+          })
+      }
+
+    })
+  }
+
   newAlertMessage(isAdmin: any) {
     this.db.database.ref(this.alertsPath).once("value", snap => {
       this.initial = true;
