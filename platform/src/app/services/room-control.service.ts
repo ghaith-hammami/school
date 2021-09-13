@@ -72,13 +72,15 @@ export class RoomControlService {
     })
   }
 
-  newAlertMessage() {
+  newAlertMessage(isAdmin: any) {
     this.db.database.ref(this.alertsPath).once("value", snap => {
       this.initial = true;
     })
     this.db.database.ref(this.alertsPath).on("child_added", (snap) => {
       if (!this.initial) return;
-      this.snackBar.open(snap.val().body, this.action);
+      if (isAdmin) {
+        this.snackBar.open(snap.val().body, this.action);
+      }
     })
 
   }

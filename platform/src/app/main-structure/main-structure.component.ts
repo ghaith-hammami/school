@@ -15,7 +15,10 @@ import firebase from 'firebase/app'
 export class MainStructureComponent implements OnInit {
   notifications: any;
 
-  constructor(private theme_ser: WebsiteThemeService, private roomSRV: RoomControlService, public authservice:AuthService) { }
+  constructor(private theme_ser: WebsiteThemeService, private roomSRV: RoomControlService, 
+    public authservice:AuthService) { 
+      this.authservice.getAfmin(firebase.auth().currentUser?.uid)
+    }
 
   alert ={
     type :"fire",
@@ -27,6 +30,9 @@ export class MainStructureComponent implements OnInit {
   theme = ''
 
   ngOnInit(): void {
+    
+    console.log(this.authservice.isAdmin);
+    
     this.roomSRV.getListOfAlerts().snapshotChanges().pipe(map(changes => changes.map(c => 
       ({ key: c.payload.key,... c.payload.val()}) ))).subscribe(res => {
         this.notifications = res
