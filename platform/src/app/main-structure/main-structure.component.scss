@@ -215,6 +215,7 @@ margin-right: 1rem;
     z-index: 25;
     width: 25rem;
     height: max-content;
+    max-height: 50vh;
     overflow-y: scroll;
     background: var(--divs_bg);
     span{

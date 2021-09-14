@@ -64,16 +64,13 @@
 .course_cont {
     width: 100%;
     height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .course_div {
     h3 {
         color: var(--primary_btn);
-        width: 25%;
+width: 25%        
+        ;
     }
     margin-bottom: 1rem;
     width: 100%;
@@ -81,17 +78,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     .course_title {
         font-size: 1rem;
         font-weight: bold;
         color: var(--secondary_color);
-        width: 25%;
     }
     h6 {
         font-size: 0.8rem;
         font-weight: 400;
         color: var(--secondary_color);
-        width: 25%;
     }
     
 }

@@ -36,7 +36,7 @@ export class RoomControlService {
     return this.roomsRef.update(key, value);
   }
 
-  addFireAlert() {
+  /* addFireAlert() {
     this.db.database.ref(this.firePath).on("child_changed", (snapshot) => {
       console.log(snapshot.val());
       if (snapshot.val() === false) {
@@ -52,11 +52,12 @@ export class RoomControlService {
       }
 
     })
-  }
+  } */
 
 
   addNoiseAlert() {
-    this.db.database.ref(this.noisePath).on("child_changed", (snapshot) => {
+    this.db.database.ref(this.roomsPath = "/Rooms"
+    ).on("child_changed", (snapshot) => {
       if (snapshot.val() === true) {
         this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
           changes.map(c => ({ key: c.payload.key, val: c.payload.val() as { "classroomNumber": number } })))).subscribe(rs => {
@@ -72,7 +73,7 @@ export class RoomControlService {
     })
   }
 
-  addTheftAlert() {
+  /* addTheftAlert() {
     this.db.database.ref(this.noisePath).on("child_changed", (snapshot) => {
       if (snapshot.val() === true) {
         this.getRoomNumber(snapshot.key).snapshotChanges().pipe(map(changes =>
@@ -88,7 +89,7 @@ export class RoomControlService {
 
     })
   }
-
+ */
   newAlertMessage(isAdmin: any) {
     this.db.database.ref(this.alertsPath).once("value", snap => {
       this.initial = true;

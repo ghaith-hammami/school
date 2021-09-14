@@ -34,8 +34,12 @@ export class MainStructureComponent implements OnInit {
   theme = ''
 
   ngOnInit() {
+    this.roomSRV.addNoiseAlert();
+    this.roomSRV.newAlertMessage(localStorage.getItem("isAdmin"));
 
     this.isAdmin = localStorage.getItem("isAdmin")
+    console.log(this.isAdmin);
+    
     this.roomSRV.getListOfAlerts().snapshotChanges().pipe(map(changes => changes.map(c =>
       ({ key: c.payload.key, ...c.payload.val() })))).subscribe(res => {
         this.notifications = res

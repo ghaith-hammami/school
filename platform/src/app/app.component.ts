@@ -40,8 +40,8 @@ export class AppComponent {
     
     this.InitializeTheme();
     //alerts 
-    this.roomSRV.addFireAlert();
-    this.roomSRV.addNoiseAlert();
+  /*   this.roomSRV.addFireAlert();
+    this.roomSRV.addNoiseAlert(); */
     
     
 

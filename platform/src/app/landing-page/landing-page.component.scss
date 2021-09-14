@@ -95,6 +95,7 @@
               font-family:'El Messiri', sans-serif ;
               font-size: 3rem;
               width: 50%;
+              z-index: 5;
               span{
                   color: #F8B200;
                   font-size: 3rem;
@@ -159,7 +160,7 @@
         height: 80vh;
         
         .info{
-          position: relative;
+           position: relative;
           width: 45%;
           h2{
             color: #FF9900;
@@ -250,6 +251,7 @@
         margin-bottom: 2rem;
       }
       .cards_cont{
+        margin-bottom: 4rem;
         position: relative;
         z-index: 2;
         height: 80vh;
@@ -313,84 +315,42 @@
         p{font-family: 'El Messiri', sans-serifs }
       }
     }
+    .disply_flex{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .crew_page{
-      padding: 2rem 0;
-      margin-top: 1rem;
-      .title{
-        text-align: center;
-        font-family: 'El Messiri', sans-serifs  ;
-        margin-bottom: 2rem;
-      }
+      &::after{
+        content:'';
+        position: absolute;
+        top:0;
+        left: 0;
         width: 100%;
-        height: 105vh;
-        overflow: hidden;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      height: 100vh;
+      background: url(../../assets/images/crew_image.jpg);
+      background-position: center;
+      background-size: cover;
     }
-    .carousel{
+    .crew_image{
       width: 100%;
-      height: 100%;
+      height: auto;
     }
-    .carousel-inner{
-        &::after{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgb(0, 0, 0,0.2);
-        }
-        .carousel-item{
-          .no_flow{
-            width: 100%;
-            overflow: hidden;
-          }
-          
-          .bg_carousel_item{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            filter: blur(10px);
-          }
-          
-          padding: 4rem 5vw;
-            width: 100%;
-            height: 100%;
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
+    .title{
+      text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 3rem;
+
+    }
     
-            .carousel-caption{
-                z-index: 3;
-                color: #08090D;
-                font-family:'Montserrat',sans-serif;
-                position: absolute;
-                top: 0;
-                left: 10vw;
-                //background-color: red;
-                width: fit-content;
-                height: 100%;
-                text-align: start;
-                padding-top: 20vh;
-                h1{
-                    font-weight: 800;
-                    font-size: 3.5rem;
-                    letter-spacing: 2px;
-                    margin-bottom: 1rem;
-                }
-                button{
-                    margin-top: 7rem;
-                    padding: 1.5em 5em;
-                    letter-spacing: 2px;
-                    font-weight: 500;
-                    width:22rem;
-                    height: 5rem;
-                }
-            }
-        }
-    }
     .btn-port{
         color: #08090D;
         border: 1px solid #08090D;

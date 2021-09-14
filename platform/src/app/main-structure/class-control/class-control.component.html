@@ -3,9 +3,9 @@
     <div class="class_cont">
         <!-- bech nesta3ml ngFor lahne  -->
         <div *ngFor="let room of classrooms; let i = index" class="class_div"
-            [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">
+            [ngClass]="{'no_empty': room.underCleaning || room.motion, 'empty': !room.underCleaning && !room.motion}">
             <div class="class_num">
-                <h1 [ngClass]="{'no_empty': room.underCleaning || (room.entrants - room.leavers) > 5, 'empty': !room.underCleaning && (room.entrants - room.leavers) <= 5 }">{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
+                <h1 [ngClass]="{'no_empty': room.underCleaning || room.motion , 'empty': !room.underCleaning && !room.motion}">{{room.classroomNumber}}</h1><span>section:° {{room.sector}}</span>
             </div>
             <div class="info">
                 <p>Temperature :<span>{{room.temperature}}°C</span></p>
@@ -96,7 +96,7 @@
                     <p>
                         Availability:
                     </p>
-                    <span *ngIf="!room.underCleaning && (room.entrants - room.leavers) <= 5; else notAvailable">
+                    <span *ngIf="!room.underCleaning && !room.motion; else notAvailable">
                         available
                     </span>
                     <ng-template #notAvailable>
